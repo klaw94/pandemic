@@ -23,9 +23,12 @@
   text-align: center;
   border-radius: 50%;
   position: absolute;
+  z-index: 1000;
 }
 
 .countryName {
+  position: sticky;
   margin-top: 18px;
   font-size: 10px;
+  z-index: 90000;
 }
