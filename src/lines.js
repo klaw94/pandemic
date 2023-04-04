@@ -445,6 +445,66 @@ const lines = [
     begin: [725, 575],
     lineTo: [725, 550],
   },
+  {
+    name: "Riyadh - Karachi",
+    color: "AntiqueWhite",
+    begin: [725, 575],
+    lineTo: [790, 535],
+  },
+  {
+    name: "Baghdad - Karachi",
+    color: "AntiqueWhite",
+    begin: [712, 520],
+    lineTo: [790, 540],
+  },
+  {
+    name: "Tehran - Karachi",
+    color: "AntiqueWhite",
+    begin: [770, 475],
+    lineTo: [785, 540],
+  },
+  {
+    name: "Karachi - map",
+    color: "black",
+    begin: [785, 540],
+    lineTo: [805, 545],
+  },
+  {
+    name: "Karachi - Mumbai",
+    color: "AntiqueWhite",
+    begin: [785, 540],
+    lineTo: [807, 585],
+  },
+  {
+    name: "Mumbai - map",
+    color: "black",
+    begin: [807, 585],
+    lineTo: [823, 560],
+  },
+  {
+    name: "Mumbai - Delhi",
+    color: "AntiqueWhite",
+    begin: [807, 585],
+    lineTo: [835, 510],
+  },
+  {
+    name: "Karachi - Delhi",
+    color: "AntiqueWhite",
+    begin: [785, 540],
+    lineTo: [835, 510],
+  },
+  {
+    name: "Tehran - Delhi",
+    color: "AntiqueWhite",
+    begin: [770, 475],
+    lineTo: [835, 510],
+  },
+  {
+    name: "Delhi - map",
+    color: "black",
+    begin: [835, 510],
+    lineTo: [830, 535],
+  },
 ];
 
 export default lines;

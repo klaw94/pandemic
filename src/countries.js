@@ -224,6 +224,34 @@ const countries = [
     connections: ["Baghdad", "Cairo", "Karachi"],
     color: "white",
   },
+  {
+    name: "Karachi",
+    left: 774,
+    top: 528,
+    connections: ["Riyadh", "Tehran", "Baghdad", "Delhi", "Mumbai"],
+    color: "white",
+  },
+  {
+    name: "Mumbai",
+    left: 796,
+    top: 570,
+    connections: ["Karachi", "Delhi", "Chennai"],
+    color: "white",
+  },
+  {
+    name: "Delhi",
+    left: 826,
+    top: 500,
+    connections: ["Karachi", "Mumbai", "Chennai", "Tehran", "Kolkata"],
+    color: "white",
+  },
+  {
+    name: "Chennai",
+    left: 843,
+    top: 597,
+    connections: ["Delhi", "Mumbai", "Bangkok", "Jakarta", "Kolkata"],
+    color: "white",
+  },
 ];
 
 export default countries;
