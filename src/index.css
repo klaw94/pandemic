@@ -1,0 +1,31 @@
+.board {
+  background-image: url(./assets/world-map-map.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 1000px;
+  width: 1200px;
+  position: relative;
+}
+
+.board svg {
+  position: absolute;
+  height: 1000px;
+  width: 1200px;
+}
+
+.countryDiv {
+  position: absolute;
+}
+
+.country {
+  border: 1px solid black;
+  width: 18px;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.countryName {
+  margin-top: 18px;
+  font-size: 10px;
+}
