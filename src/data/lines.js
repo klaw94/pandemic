@@ -505,6 +505,24 @@ const lines = [
     begin: [835, 510],
     lineTo: [830, 535],
   },
+  {
+    name: "Delhi - Chennai",
+    color: "AntiqueWhite",
+    begin: [835, 510],
+    lineTo: [855, 610],
+  },
+  {
+    name: "Mumbai - Chennai",
+    color: "AntiqueWhite",
+    begin: [807, 585],
+    lineTo: [855, 610],
+  },
+  {
+    name: "Chennai - map",
+    color: "black",
+    begin: [855, 610],
+    lineTo: [845, 600],
+  },
 ];
 
 export default lines;

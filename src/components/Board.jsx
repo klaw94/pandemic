@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { StraightLine, LineL } from "react-drawline";
-import countries from "../countries";
-import lines from "../lines";
+import countries from "../data/countries";
+import lines from "../data/lines";
 
 export default function Board() {
   // const styles = {left: }
