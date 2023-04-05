@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { StraightLine, LineL } from "react-drawline";
 import countries from "../data/countries";
+import { nanoid } from "nanoid";
 import lines from "../data/lines";
+import ferries from "../data/ferries";
 
 export default function Board() {
   // const styles = {left: }
@@ -10,8 +12,8 @@ export default function Board() {
     const styleKnop = { backgroundColor: country.color };
     const stylesName = { left: country.left, top: country.top };
     return (
-      <div className="countryDiv" style={stylesDiv}>
-        <div key={country.name} className="country" style={styleKnop}>
+      <div key={nanoid()} className="countryDiv" style={stylesDiv}>
+        <div className="country" style={styleKnop}>
           {" "}
           C{" "}
         </div>
@@ -22,7 +24,7 @@ export default function Board() {
     );
   });
 
-  let visualLines = lines.map((line) => {
+  let visualMapLines = lines.map((line) => {
     return (
       <svg>
         <line
@@ -36,10 +38,31 @@ export default function Board() {
     );
   });
 
+  let visualLines = countries.map((country) => {
+    return country.connections.map((conName) => {
+      let connectedCountry = countries.find((c) => c.name === conName);
+      let connectedFerry = ferries.find((f) => f.name === conName);
+      return (
+        <svg key={nanoid()}>
+          <line
+            x1={country.left + 10}
+            y1={country.top + 10}
+            x2={
+              connectedFerry ? connectedFerry.left : connectedCountry.left + 10
+            }
+            y2={connectedFerry ? connectedFerry.top : connectedCountry.top + 10}
+            stroke={"AntiqueWhite"}
+          ></line>
+        </svg>
+      );
+    });
+  });
+
   return (
     <div className="board">
       {visualCountries}
       {visualLines}
+      {visualMapLines}
     </div>
   );
 }

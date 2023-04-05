@@ -1,4 +1,5 @@
 import EnumCountries from "./enumCountries";
+import EnumFerries from "./enumFerries";
 
 const countries = [
   {
@@ -8,8 +9,8 @@ const countries = [
     connections: [
       EnumCountries.Chicago,
       EnumCountries.LosAngeles,
-      EnumCountries.Manila,
-      EnumCountries.Tokyo,
+      EnumFerries.SFManila,
+      EnumFerries.SFTokyo,
     ],
     color: "blue",
   },
@@ -150,7 +151,7 @@ const countries = [
       EnumCountries.SanFrancisco,
       EnumCountries.Chicago,
       EnumCountries.Mexico,
-      EnumCountries.Sydney,
+      EnumFerries.LASydney,
     ],
     color: "yellow",
   },
@@ -404,6 +405,155 @@ const countries = [
       EnumCountries.Kolkata,
     ],
     color: "white",
+  },
+  {
+    name: EnumCountries.Kolkata,
+    left: 872,
+    top: 519,
+    connections: [
+      EnumCountries.Delhi,
+      EnumCountries.Chennai,
+      EnumCountries.Bangkok,
+      EnumCountries.HongKong,
+    ],
+    color: "white",
+  },
+  {
+    name: EnumCountries.Jakarta,
+    left: 919,
+    top: 660,
+    connections: [
+      EnumCountries.Chennai,
+      EnumCountries.Bangkok,
+      EnumCountries.HoChiminh,
+      EnumCountries.Sydney,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Bangkok,
+    left: 910,
+    top: 580,
+    connections: [
+      EnumCountries.Chennai,
+      EnumCountries.Kolkata,
+      EnumCountries.HoChiminh,
+      EnumCountries.HongKong,
+      EnumCountries.Jakarta,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.HongKong,
+    left: 943,
+    top: 549,
+    connections: [
+      EnumCountries.Shangai,
+      EnumCountries.Kolkata,
+      EnumCountries.HoChiminh,
+      EnumCountries.Manila,
+      EnumCountries.Bangkok,
+      EnumCountries.Taipei,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Shangai,
+    left: 943,
+    top: 493,
+    connections: [
+      EnumCountries.Beijing,
+      EnumCountries.Seoul,
+      EnumCountries.Tokyo,
+      EnumCountries.Taipei,
+      EnumCountries.HongKong,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Beijing,
+    left: 928,
+    top: 449,
+    connections: [EnumCountries.Shangai, EnumCountries.Seoul],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Seoul,
+    left: 978,
+    top: 433,
+    connections: [
+      EnumCountries.Shangai,
+      EnumCountries.Beijing,
+      EnumCountries.Tokyo,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Tokyo,
+    left: 1033,
+    top: 441,
+    connections: [
+      EnumCountries.Shangai,
+      EnumCountries.Seoul,
+      EnumCountries.Osaka,
+      EnumFerries.TokyoSF,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Osaka,
+    left: 1044,
+    top: 509,
+    connections: [EnumCountries.Tokyo, EnumCountries.Taipei],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Taipei,
+    left: 997,
+    top: 536,
+    connections: [
+      EnumCountries.Osaka,
+      EnumCountries.Shangai,
+      EnumCountries.HongKong,
+      EnumCountries.Manila,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Manila,
+    left: 1030,
+    top: 620,
+    connections: [
+      EnumFerries.ManilaSF,
+      EnumCountries.Taipei,
+      EnumCountries.HongKong,
+      EnumCountries.HoChiminh,
+      EnumCountries.Sydney,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.HoChiminh,
+    left: 956,
+    top: 620,
+    connections: [
+      EnumCountries.Manila,
+      EnumCountries.Bangkok,
+      EnumCountries.HongKong,
+      EnumCountries.Jakarta,
+    ],
+    color: "red",
+  },
+  {
+    name: EnumCountries.Sydney,
+    left: 1067,
+    top: 750,
+    connections: [
+      EnumCountries.Manila,
+      EnumFerries.SydneyLA,
+      EnumCountries.Jakarta,
+    ],
+    color: "red",
   },
 ];
 

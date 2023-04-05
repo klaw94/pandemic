@@ -1,527 +1,259 @@
+import countries from "./countries";
+import EnumCountries from "./enumCountries";
+
 const lines = [
-  {
-    name: "San Francisco - out - Tokyo",
-    text: "Tokyo",
-    color: "AntiqueWhite",
-    begin: [150, 490],
-    lineTo: [0, 470],
-  },
-  {
-    name: "San Francisco - out - Manila",
-    text: "Manila",
-    color: "AntiqueWhite",
-    begin: [150, 490],
-    lineTo: [0, 500],
-  },
-  {
-    name: "San Francisco - Chicago",
-    color: "AntiqueWhite",
-    begin: [150, 490],
-    lineTo: [228, 450],
-  },
-  {
-    name: "Chicago - Montreal",
-    color: "AntiqueWhite",
-    begin: [228, 450],
-    lineTo: [317, 450],
-  },
-  {
-    name: "Montreal - New York",
-    color: "AntiqueWhite",
-    begin: [317, 450],
-    lineTo: [370, 457],
-  },
   {
     name: "New York - map",
     color: "blue",
-    begin: [370, 460],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.NewYork).left + 10,
+      countries.find((c) => c.name === EnumCountries.NewYork).top + 10,
+    ],
     lineTo: [317, 480],
   },
-  {
-    name: "New York - Washington",
-    color: "AntiqueWhite",
-    begin: [370, 457],
-    lineTo: [360, 497],
-  },
-  {
-    name: "New York - Madrid",
-    color: "AntiqueWhite",
-    begin: [370, 457],
-    lineTo: [510, 490],
-  },
+
   {
     name: "Madrid - map",
     color: "blue",
-    begin: [510, 490],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Madrid).left + 10,
+      countries.find((c) => c.name === EnumCountries.Madrid).top + 10,
+    ],
     lineTo: [550, 490],
   },
-  {
-    name: "New York - London",
-    color: "AntiqueWhite",
-    begin: [370, 457],
-    lineTo: [510, 437],
-  },
+
   {
     name: "London - map",
     color: "blue",
-    begin: [510, 437],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.London).left + 10,
+      countries.find((c) => c.name === EnumCountries.London).top + 10,
+    ],
     lineTo: [565, 440],
   },
-  {
-    name: "London - Paris",
-    color: "AntiqueWhite",
-    begin: [510, 437],
-    lineTo: [569, 458],
-  },
-  {
-    name: "Madrid - Paris",
-    color: "AntiqueWhite",
-    begin: [510, 490],
-    lineTo: [569, 462],
-  },
-  {
-    name: "Madrid - London",
-    color: "AntiqueWhite",
-    begin: [515, 490],
-    lineTo: [517, 437],
-  },
-  {
-    name: "Paris - Essen",
-    color: "AntiqueWhite",
-    begin: [573, 462],
-    lineTo: [590, 424],
-  },
-  {
-    name: "London - Essen",
-    color: "AntiqueWhite",
-    begin: [510, 437],
-    lineTo: [590, 420],
-  },
+
   {
     name: "Essen - map",
     color: "blue",
-    begin: [590, 420],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Essen).left + 10,
+      countries.find((c) => c.name === EnumCountries.Essen).top + 10,
+    ],
     lineTo: [575, 445],
   },
-  {
-    name: "Milan - Essen",
-    color: "AntiqueWhite",
-    begin: [613, 445],
-    lineTo: [590, 420],
-  },
+
   {
     name: "Milan - map",
     color: "blue",
-    begin: [613, 453],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Milan).left + 10,
+      countries.find((c) => c.name === EnumCountries.Milan).top + 10,
+    ],
     lineTo: [600, 470],
   },
-  {
-    name: "Paris - Milan",
-    color: "AntiqueWhite",
-    begin: [573, 462],
-    lineTo: [613, 445],
-  },
-  {
-    name: "St. Petersburg - Essen",
-    color: "AntiqueWhite",
-    begin: [670, 393],
-    lineTo: [590, 420],
-  },
+
   {
     name: "Washington - map",
     color: "blue",
-    begin: [360, 497],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Washington).left + 10,
+      countries.find((c) => c.name === EnumCountries.Washington).top + 10,
+    ],
     lineTo: [310, 493],
   },
-  {
-    name: "Montreal - Washington",
-    color: "AntiqueWhite",
-    begin: [317, 450],
-    lineTo: [360, 497],
-  },
-  {
-    name: "Washington - Atlanta",
-    color: "AntiqueWhite",
-    begin: [360, 497],
-    lineTo: [280, 497],
-  },
-  {
-    name: "Atlanta - Chicago",
-    color: "AntiqueWhite",
-    begin: [280, 497],
-    lineTo: [228, 450],
-  },
-  {
-    name: "Chicago - Los Angeles",
-    color: "AntiqueWhite",
-    begin: [228, 450],
-    lineTo: [160, 550],
-  },
-  {
-    name: "San Francisco - Los Angeles",
-    color: "AntiqueWhite",
-    begin: [150, 490],
-    lineTo: [150, 550],
-  },
-  {
-    name: "Los Angeles - out - Manila",
-    color: "AntiqueWhite",
-    begin: [150, 550],
-    lineTo: [0, 600],
-  },
-  {
-    name: "Los Angeles - out - Manila",
-    color: "AntiqueWhite",
-    begin: [150, 550],
-    lineTo: [0, 600],
-  },
-  {
-    name: "Los Angeles - Mexico City",
-    color: "AntiqueWhite",
-    begin: [150, 550],
-    lineTo: [230, 570],
-  },
-  {
-    name: "Chicago - Mexico City",
-    color: "AntiqueWhite",
-    begin: [228, 450],
-    lineTo: [230, 570],
-  },
-  {
-    name: "Miami - Washington",
-    color: "AntiqueWhite",
-    begin: [310, 560],
-    lineTo: [360, 497],
-  },
-  {
-    name: "Miami - Atlanta",
-    color: "AntiqueWhite",
-    begin: [305, 560],
-    lineTo: [280, 497],
-  },
+
   {
     name: "Miami - map",
     color: "yellow",
-    begin: [305, 560],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Miami).left + 10,
+      countries.find((c) => c.name === EnumCountries.Miami).top + 10,
+    ],
     lineTo: [287, 540],
   },
-  {
-    name: "Miami - Mexico City",
-    color: "AntiqueWhite",
-    begin: [305, 560],
-    lineTo: [230, 570],
-  },
-  {
-    name: "Miami - Bogotá",
-    color: "AntiqueWhite",
-    begin: [305, 560],
-    lineTo: [305, 630],
-  },
-  {
-    name: "Mexico City - Bogotá",
-    color: "AntiqueWhite",
-    begin: [230, 570],
-    lineTo: [305, 630],
-  },
-  {
-    name: "Mexico City - Bogotá",
-    color: "AntiqueWhite",
-    begin: [230, 570],
-    lineTo: [305, 630],
-  },
-  {
-    name: "Mexico City - Lima",
-    color: "AntiqueWhite",
-    begin: [230, 570],
-    lineTo: [295, 700],
-  },
-  {
-    name: "Bogotá - Lima",
-    color: "AntiqueWhite",
-    begin: [305, 630],
-    lineTo: [295, 700],
-  },
+
   {
     name: "Lima - map",
     color: "yellow",
-    begin: [295, 700],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Lima).left + 10,
+      countries.find((c) => c.name === EnumCountries.Lima).top + 10,
+    ],
     lineTo: [305, 680],
   },
-  {
-    name: "Lima - Santiago",
-    color: "AntiqueWhite",
-    begin: [295, 700],
-    lineTo: [305, 800],
-  },
+
   {
     name: "Santiago - map",
     color: "yellow",
-    begin: [305, 800],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Santiago).left + 10,
+      countries.find((c) => c.name === EnumCountries.Santiago).top + 10,
+    ],
     lineTo: [320, 770],
   },
-  {
-    name: "Bogotá - Buenos Aires",
-    color: "AntiqueWhite",
-    begin: [305, 630],
-    lineTo: [370, 760],
-  },
-  {
-    name: "Bogotá - Sao Paulo",
-    color: "AntiqueWhite",
-    begin: [305, 630],
-    lineTo: [420, 711],
-  },
-  {
-    name: "Buenos Aires - Sao Paulo",
-    color: "AntiqueWhite",
-    begin: [370, 760],
-    lineTo: [410, 711],
-  },
-  {
-    name: "Sao Paulo - Madrid",
-    color: "AntiqueWhite",
-    begin: [413, 711],
-    lineTo: [515, 490],
-  },
-  {
-    name: "Sao Paulo - Lagos",
-    color: "AntiqueWhite",
-    begin: [413, 711],
-    lineTo: [560, 605],
-  },
-  {
-    name: "Lagos - Kinshasa",
-    color: "AntiqueWhite",
-    begin: [560, 605],
-    lineTo: [605, 650],
-  },
-  {
-    name: "Johannesburg - Kinshasa",
-    color: "AntiqueWhite",
-    begin: [655, 730],
-    lineTo: [610, 650],
-  },
+
   {
     name: "Kinshasa - map",
     color: "yellow",
-    begin: [613, 650],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Kinshasa).left + 10,
+      countries.find((c) => c.name === EnumCountries.Kinshasa).top + 10,
+    ],
     lineTo: [610, 630],
   },
-  {
-    name: "Johannesburg - Khartoum",
-    color: "AntiqueWhite",
-    begin: [655, 730],
-    lineTo: [655, 600],
-  },
-  {
-    name: "Kinshasa - Khartoum",
-    color: "AntiqueWhite",
-    begin: [615, 650],
-    lineTo: [655, 590],
-  },
-  {
-    name: "Lagos - Khartoum",
-    color: "AntiqueWhite",
-    begin: [560, 605],
-    lineTo: [655, 590],
-  },
+
   {
     name: "Khartoum - map",
     color: "yellow",
-    begin: [655, 590],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Khartoum).left + 10,
+      countries.find((c) => c.name === EnumCountries.Khartoum).top + 10,
+    ],
     lineTo: [660, 570],
   },
-  {
-    name: "Algiers - Madrid",
-    color: "AntiqueWhite",
-    begin: [580, 525],
-    lineTo: [510, 490],
-  },
-  {
-    name: "Algiers - Paris",
-    color: "AntiqueWhite",
-    begin: [588, 525],
-    lineTo: [578, 458],
-  },
+
   {
     name: "Algiers - map",
     color: "black",
-    begin: [588, 525],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Algiers).left + 10,
+      countries.find((c) => c.name === EnumCountries.Algiers).top + 10,
+    ],
     lineTo: [590, 505],
   },
-  {
-    name: "Algiers - Istanbul",
-    color: "AntiqueWhite",
-    begin: [588, 525],
-    lineTo: [650, 475],
-  },
-  {
-    name: "Milan - Istanbul",
-    color: "AntiqueWhite",
-    begin: [617, 445],
-    lineTo: [640, 475],
-  },
-  {
-    name: "St. Petersburg - Istanbul",
-    color: "AntiqueWhite",
-    begin: [663, 393],
-    lineTo: [647, 475],
-  },
-  {
-    name: "Cairo - Istanbul",
-    color: "AntiqueWhite",
-    begin: [646, 530],
-    lineTo: [647, 475],
-  },
-  {
-    name: "Algiers - Cairo",
-    color: "AntiqueWhite",
-    begin: [588, 525],
-    lineTo: [646, 538],
-  },
-  {
-    name: "Cairo - Khartoum",
-    color: "AntiqueWhite",
-    begin: [646, 538],
-    lineTo: [655, 590],
-  },
-  {
-    name: "St. Petersburg - Moscow",
-    color: "AntiqueWhite",
-    begin: [663, 393],
-    lineTo: [712, 440],
-  },
-  {
-    name: "Istambul - Moscow",
-    color: "AntiqueWhite",
-    begin: [640, 486],
-    lineTo: [712, 440],
-  },
+
   {
     name: "Moscow - map",
     color: "black",
-    begin: [712, 440],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Moscow).left + 10,
+      countries.find((c) => c.name === EnumCountries.Moscow).top + 10,
+    ],
     lineTo: [670, 430],
   },
-  {
-    name: "Istambul - Baghdad",
-    color: "AntiqueWhite",
-    begin: [648, 486],
-    lineTo: [719, 525],
-  },
-  {
-    name: "Cairo - Baghdad",
-    color: "AntiqueWhite",
-    begin: [646, 538],
-    lineTo: [712, 520],
-  },
-  {
-    name: "Tehran - Baghdad",
-    color: "AntiqueWhite",
-    begin: [770, 473],
-    lineTo: [712, 520],
-  },
-  {
-    name: "Tehran - Moscow",
-    color: "AntiqueWhite",
-    begin: [770, 475],
-    lineTo: [712, 440],
-  },
-  {
-    name: "Cairo - Riyadh",
-    color: "AntiqueWhite",
-    begin: [646, 538],
-    lineTo: [720, 575],
-  },
-  {
-    name: "Riyadh - Baghdad",
-    color: "AntiqueWhite",
-    begin: [725, 575],
-    lineTo: [712, 520],
-  },
+
   {
     name: "Riyadh - map",
     color: "black",
-    begin: [725, 575],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Riyadh).left + 10,
+      countries.find((c) => c.name === EnumCountries.Riyadh).top + 10,
+    ],
     lineTo: [725, 550],
   },
-  {
-    name: "Riyadh - Karachi",
-    color: "AntiqueWhite",
-    begin: [725, 575],
-    lineTo: [790, 535],
-  },
-  {
-    name: "Baghdad - Karachi",
-    color: "AntiqueWhite",
-    begin: [712, 520],
-    lineTo: [790, 540],
-  },
-  {
-    name: "Tehran - Karachi",
-    color: "AntiqueWhite",
-    begin: [770, 475],
-    lineTo: [785, 540],
-  },
+
   {
     name: "Karachi - map",
     color: "black",
-    begin: [785, 540],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Karachi).left + 10,
+      countries.find((c) => c.name === EnumCountries.Karachi).top + 10,
+    ],
     lineTo: [805, 545],
   },
-  {
-    name: "Karachi - Mumbai",
-    color: "AntiqueWhite",
-    begin: [785, 540],
-    lineTo: [807, 585],
-  },
+
   {
     name: "Mumbai - map",
     color: "black",
-    begin: [807, 585],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Mumbai).left + 10,
+      countries.find((c) => c.name === EnumCountries.Mumbai).top + 10,
+    ],
     lineTo: [823, 560],
   },
-  {
-    name: "Mumbai - Delhi",
-    color: "AntiqueWhite",
-    begin: [807, 585],
-    lineTo: [835, 510],
-  },
-  {
-    name: "Karachi - Delhi",
-    color: "AntiqueWhite",
-    begin: [785, 540],
-    lineTo: [835, 510],
-  },
-  {
-    name: "Tehran - Delhi",
-    color: "AntiqueWhite",
-    begin: [770, 475],
-    lineTo: [835, 510],
-  },
+
   {
     name: "Delhi - map",
     color: "black",
-    begin: [835, 510],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Delhi).left + 10,
+      countries.find((c) => c.name === EnumCountries.Delhi).top + 10,
+    ],
     lineTo: [830, 535],
   },
-  {
-    name: "Delhi - Chennai",
-    color: "AntiqueWhite",
-    begin: [835, 510],
-    lineTo: [855, 610],
-  },
-  {
-    name: "Mumbai - Chennai",
-    color: "AntiqueWhite",
-    begin: [807, 585],
-    lineTo: [855, 610],
-  },
+
   {
     name: "Chennai - map",
     color: "black",
-    begin: [855, 610],
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Chennai).left + 10,
+      countries.find((c) => c.name === EnumCountries.Chennai).top + 10,
+    ],
     lineTo: [845, 600],
+  },
+
+  {
+    name: "Kolkata - map",
+    color: "black",
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Kolkata).left + 10,
+      countries.find((c) => c.name === EnumCountries.Kolkata).top + 10,
+    ],
+    lineTo: [879, 555],
+  },
+
+  {
+    name: "Jakarta - map",
+    color: "red",
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Jakarta).left + 10,
+      countries.find((c) => c.name === EnumCountries.Jakarta).top + 10,
+    ],
+    lineTo: [945, 655],
+  },
+  {
+    name: "Manila - map",
+    color: "red",
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Manila).left + 10,
+      countries.find((c) => c.name === EnumCountries.Manila).top + 10,
+    ],
+    lineTo: [995, 575],
+  },
+  {
+    name: "Osaka - map",
+    color: "red",
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Osaka).left + 10,
+      countries.find((c) => c.name === EnumCountries.Osaka).top + 10,
+    ],
+    lineTo: [1030, 500],
+  },
+  {
+    name: "Tokyo - map",
+    color: "red",
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Tokyo).left + 10,
+      countries.find((c) => c.name === EnumCountries.Tokyo).top + 10,
+    ],
+    lineTo: [1045, 495],
+  },
+  {
+    name: "Seoul - map",
+    color: "red",
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Seoul).left + 10,
+      countries.find((c) => c.name === EnumCountries.Seoul).top + 10,
+    ],
+    lineTo: [1000, 485],
+  },
+  {
+    name: "Beijing - map",
+    color: "red",
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Beijing).left + 10,
+      countries.find((c) => c.name === EnumCountries.Beijing).top + 10,
+    ],
+    lineTo: [965, 485],
+  },
+  {
+    name: "Shangai - map",
+    color: "red",
+    begin: [
+      countries.find((c) => c.name === EnumCountries.Shangai).left + 10,
+      countries.find((c) => c.name === EnumCountries.Shangai).top + 10,
+    ],
+    lineTo: [980, 505],
   },
 ];
 
