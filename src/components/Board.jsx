@@ -1,12 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { StraightLine, LineL } from "react-drawline";
 import countries from "../data/countries";
 import { nanoid } from "nanoid";
 import lines from "../data/lines";
 import ferries from "../data/ferries";
 
 export default function Board() {
-  // const styles = {left: }
   let visualCountries = countries.map((country) => {
     const stylesDiv = { left: country.left, top: country.top };
     const styleKnop = { backgroundColor: country.color };
@@ -26,7 +24,7 @@ export default function Board() {
 
   let visualMapLines = lines.map((line) => {
     return (
-      <svg>
+      <svg key={nanoid()}>
         <line
           x1={line.begin[0]}
           y1={line.begin[1]}
@@ -58,11 +56,24 @@ export default function Board() {
     });
   });
 
+  let visualFerries = ferries.map((ferry) => {
+    const stylesName = {
+      position: "absolute",
+      left: ferry.left > 0 ? ferry.left - 40 : ferry.left,
+      top: ferry.top,
+    };
+    return (
+      <div key={nanoid()} className="ferryDiv" style={stylesName}>
+        {ferry.text}
+      </div>
+    );
+  });
   return (
     <div className="board">
       {visualCountries}
       {visualLines}
       {visualMapLines}
+      {visualFerries}
     </div>
   );
 }
