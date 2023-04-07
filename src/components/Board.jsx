@@ -4,11 +4,11 @@ import { nanoid } from "nanoid";
 import lines from "../data/lines";
 import ferries from "../data/ferries";
 import infectionCards from "../data/infectionCards";
+import Country from "./Country";
 
 function shuffle(deck) {
   // for 1000 turns
   // switch the values of two random cards
-  // let shuffledDeck = new Array();
   for (let i = 0; i < 1000; i++) {
     let location1 = Math.floor(Math.random() * deck.length);
     let location2 = Math.floor(Math.random() * deck.length);
@@ -22,38 +22,7 @@ function shuffle(deck) {
 
 export default function Board() {
   const [infectionCardsDeck, setInfectionCardsDeck] = useState(infectionCards);
-  const [infectionCardsDiscard, setInfectionCardsDiscard] = useState([
-    {
-      name: "San",
-      color: "blue",
-      photo: "northamerica.png",
-    },
-    {
-      name: "Chi",
-      color: "blue",
-      photo: "northamerica.png",
-    },
-    {
-      name: "San Francisco",
-      color: "blue",
-      photo: "northamerica.png",
-    },
-    {
-      name: "San",
-      color: "blue",
-      photo: "northamerica.png",
-    },
-    {
-      name: "Chi",
-      color: "blue",
-      photo: "northamerica.png",
-    },
-    {
-      name: "Montreal",
-      color: "blue",
-      photo: "northamerica.png",
-    },
-  ]);
+  const [infectionCardsDiscard, setInfectionCardsDiscard] = useState([]);
 
   useEffect(() => {
     setInfectionCardsDeck((prevValue) => shuffle(prevValue));
@@ -65,15 +34,13 @@ export default function Board() {
     const styleKnop = { backgroundColor: country.color };
     const stylesName = { left: country.left, top: country.top };
     return (
-      <div key={nanoid()} className="countryDiv" style={stylesDiv}>
-        <div className="country" style={styleKnop}>
-          {" "}
-          C{" "}
-        </div>
-        <div className="countryName" style={stylesName}>
-          {country.name}
-        </div>
-      </div>
+      <Country
+        key={nanoid()}
+        country={country}
+        stylesDiv={stylesDiv}
+        styleKnop={styleKnop}
+        styleName={stylesName}
+      />
     );
   });
 
@@ -128,7 +95,7 @@ export default function Board() {
     //top math so that it looks like a card deck and not only one card
     (card, index) => {
       const styles = {
-        "background-image": `url(/${card.photo})`,
+        backgroundImage: `url(/${card.photo})`,
         top: 30 + Math.round(index / 3) * 5,
         borderBottom: `20px solid ${card.color}`,
         borderRight: `20px solid ${card.color}`,

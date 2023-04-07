@@ -13,6 +13,9 @@ const countries = [
       EnumFerries.SFTokyo,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Chicago,
@@ -25,6 +28,9 @@ const countries = [
       EnumCountries.Montreal,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Montreal,
@@ -36,6 +42,9 @@ const countries = [
       EnumCountries.Chicago,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.NewYork,
@@ -48,6 +57,9 @@ const countries = [
       EnumCountries.Washington,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Washington,
@@ -59,6 +71,9 @@ const countries = [
       EnumCountries.Atlanta,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Atlanta,
@@ -70,6 +85,9 @@ const countries = [
       EnumCountries.Miami,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: true,
+    players: [],
   },
   {
     name: EnumCountries.Madrid,
@@ -83,6 +101,9 @@ const countries = [
       EnumCountries.Algiers,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.London,
@@ -95,6 +116,9 @@ const countries = [
       EnumCountries.Paris,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Paris,
@@ -108,6 +132,9 @@ const countries = [
       EnumCountries.Algiers,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Essen,
@@ -120,6 +147,9 @@ const countries = [
       EnumCountries.StPetersburg,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Milan,
@@ -131,6 +161,9 @@ const countries = [
       EnumCountries.Istanbul,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.StPetersburg,
@@ -142,6 +175,9 @@ const countries = [
       EnumCountries.Istanbul,
     ],
     color: "blue",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.LosAngeles,
@@ -154,6 +190,9 @@ const countries = [
       EnumFerries.LASydney,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
 
   {
@@ -167,6 +206,9 @@ const countries = [
       EnumCountries.Bogota,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Miami,
@@ -179,6 +221,9 @@ const countries = [
       EnumCountries.Bogota,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Bogota,
@@ -191,6 +236,9 @@ const countries = [
       EnumCountries.SaoPaulo,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Lima,
@@ -202,6 +250,9 @@ const countries = [
       EnumCountries.Santiago,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Santiago,
@@ -209,6 +260,9 @@ const countries = [
     top: 785,
     connections: [EnumCountries.Lima],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.BuenosAires,
@@ -216,6 +270,9 @@ const countries = [
     top: 748,
     connections: [EnumCountries.Bogota, EnumCountries.SaoPaulo],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.SaoPaulo,
@@ -228,6 +285,9 @@ const countries = [
       EnumCountries.BuenosAires,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Lagos,
@@ -239,6 +299,9 @@ const countries = [
       EnumCountries.Khartoum,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Kinshasa,
@@ -250,6 +313,9 @@ const countries = [
       EnumCountries.Khartoum,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Johannesburg,
@@ -257,6 +323,9 @@ const countries = [
     top: 721,
     connections: [EnumCountries.Kinshasa, EnumCountries.Khartoum],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Khartoum,
@@ -269,6 +338,9 @@ const countries = [
       EnumCountries.Cairo,
     ],
     color: "yellow",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Algiers,
@@ -281,6 +353,9 @@ const countries = [
       EnumCountries.Cairo,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Istanbul,
@@ -295,6 +370,9 @@ const countries = [
       EnumCountries.StPetersburg,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Cairo,
@@ -308,6 +386,9 @@ const countries = [
       EnumCountries.Baghdad,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Moscow,
@@ -319,6 +400,9 @@ const countries = [
       EnumCountries.Tehran,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Baghdad,
@@ -332,6 +416,9 @@ const countries = [
       EnumCountries.Tehran,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Tehran,
@@ -344,6 +431,9 @@ const countries = [
       EnumCountries.Karachi,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Riyadh,
@@ -355,6 +445,9 @@ const countries = [
       EnumCountries.Karachi,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Karachi,
@@ -368,6 +461,9 @@ const countries = [
       EnumCountries.Mumbai,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Mumbai,
@@ -379,6 +475,9 @@ const countries = [
       EnumCountries.Chennai,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Delhi,
@@ -392,6 +491,9 @@ const countries = [
       EnumCountries.Kolkata,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Chennai,
@@ -405,6 +507,9 @@ const countries = [
       EnumCountries.Kolkata,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Kolkata,
@@ -417,6 +522,9 @@ const countries = [
       EnumCountries.HongKong,
     ],
     color: "white",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Jakarta,
@@ -429,6 +537,9 @@ const countries = [
       EnumCountries.Sydney,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Bangkok,
@@ -442,6 +553,9 @@ const countries = [
       EnumCountries.Jakarta,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.HongKong,
@@ -456,6 +570,9 @@ const countries = [
       EnumCountries.Taipei,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Shangai,
@@ -469,6 +586,9 @@ const countries = [
       EnumCountries.HongKong,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Beijing,
@@ -476,6 +596,9 @@ const countries = [
     top: 449,
     connections: [EnumCountries.Shangai, EnumCountries.Seoul],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Seoul,
@@ -487,6 +610,9 @@ const countries = [
       EnumCountries.Tokyo,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Tokyo,
@@ -499,6 +625,9 @@ const countries = [
       EnumFerries.TokyoSF,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Osaka,
@@ -506,6 +635,9 @@ const countries = [
     top: 509,
     connections: [EnumCountries.Tokyo, EnumCountries.Taipei],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Taipei,
@@ -518,6 +650,9 @@ const countries = [
       EnumCountries.Manila,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Manila,
@@ -531,6 +666,9 @@ const countries = [
       EnumCountries.Sydney,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.HoChiminh,
@@ -543,6 +681,9 @@ const countries = [
       EnumCountries.Jakarta,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
   {
     name: EnumCountries.Sydney,
@@ -554,6 +695,9 @@ const countries = [
       EnumCountries.Jakarta,
     ],
     color: "red",
+    infectionCubes: [],
+    researchCenter: false,
+    players: [],
   },
 ];
 
