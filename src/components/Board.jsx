@@ -1,11 +1,66 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import countries from "../data/countries";
 import { nanoid } from "nanoid";
 import lines from "../data/lines";
 import ferries from "../data/ferries";
+import infectionCards from "../data/infectionCards";
+
+function shuffle(deck) {
+  // for 1000 turns
+  // switch the values of two random cards
+  // let shuffledDeck = new Array();
+  for (let i = 0; i < 1000; i++) {
+    let location1 = Math.floor(Math.random() * deck.length);
+    let location2 = Math.floor(Math.random() * deck.length);
+    let tmp = deck[location1];
+
+    deck[location1] = deck[location2];
+    deck[location2] = tmp;
+  }
+  return deck;
+}
 
 export default function Board() {
-  let visualCountries = countries.map((country) => {
+  const [infectionCardsDeck, setInfectionCardsDeck] = useState(infectionCards);
+  const [infectionCardsDiscard, setInfectionCardsDiscard] = useState([
+    {
+      name: "San",
+      color: "blue",
+      photo: "northamerica.png",
+    },
+    {
+      name: "Chi",
+      color: "blue",
+      photo: "northamerica.png",
+    },
+    {
+      name: "San Francisco",
+      color: "blue",
+      photo: "northamerica.png",
+    },
+    {
+      name: "San",
+      color: "blue",
+      photo: "northamerica.png",
+    },
+    {
+      name: "Chi",
+      color: "blue",
+      photo: "northamerica.png",
+    },
+    {
+      name: "Montreal",
+      color: "blue",
+      photo: "northamerica.png",
+    },
+  ]);
+
+  useEffect(() => {
+    setInfectionCardsDeck((prevValue) => shuffle(prevValue));
+  }, []);
+  console.log(infectionCardsDeck);
+
+  const visualCountries = countries.map((country) => {
     const stylesDiv = { left: country.left, top: country.top };
     const styleKnop = { backgroundColor: country.color };
     const stylesName = { left: country.left, top: country.top };
@@ -22,7 +77,7 @@ export default function Board() {
     );
   });
 
-  let visualMapLines = lines.map((line) => {
+  const visualMapLines = lines.map((line) => {
     return (
       <svg key={nanoid()}>
         <line
@@ -36,7 +91,7 @@ export default function Board() {
     );
   });
 
-  let visualLines = countries.map((country) => {
+  const visualLines = countries.map((country) => {
     return country.connections.map((conName) => {
       let connectedCountry = countries.find((c) => c.name === conName);
       let connectedFerry = ferries.find((f) => f.name === conName);
@@ -56,7 +111,7 @@ export default function Board() {
     });
   });
 
-  let visualFerries = ferries.map((ferry) => {
+  const visualFerries = ferries.map((ferry) => {
     const stylesName = {
       position: "absolute",
       left: ferry.left > 0 ? ferry.left - 40 : ferry.left,
@@ -68,8 +123,34 @@ export default function Board() {
       </div>
     );
   });
+
+  const visualInfectionCardsDiscardPile = infectionCardsDiscard.map(
+    //top math so that it looks like a card deck and not only one card
+    (card, index) => {
+      const styles = {
+        "background-image": `url(/${card.photo})`,
+        top: 30 + Math.round(index / 3) * 5,
+        borderBottom: `20px solid ${card.color}`,
+        borderRight: `20px solid ${card.color}`,
+      };
+      return (
+        <div className="infectionCard" style={styles}>
+          <h1>{card.name}</h1>
+        </div>
+      );
+    }
+  );
+
   return (
     <div className="board">
+      <div className="board--infectionCardsCorner">
+        {infectionCardsDeck.length > 0 && (
+          <div className="infectionCardBack"></div>
+        )}
+        <div className="board--infectionCardsCorner--openDiv">
+          {visualInfectionCardsDiscardPile}
+        </div>
+      </div>
       {visualCountries}
       {visualLines}
       {visualMapLines}
