@@ -1,15 +1,33 @@
 import { useState, useEffect } from "react";
-import blackcube from "../assets/blackcube.jpg";
-import bluecube from "../assets/bluecube.jpg";
+import { nanoid } from "nanoid";
+import blackcube from "../assets/blackcube.png";
+import bluecube from "../assets/bluecube.png";
 import redcube from "../assets/redcube.png";
-import yellowcube from "../assets/yellowcube.jpg";
+import yellowcube from "../assets/yellowcube.png";
 import researchCenter from "../assets/hospital.png";
 
 export default function Country(props) {
-  const cubes = [{ color: "blue" }, { color: "blue" }];
+  const cubes = [{ color: "blue" }, { color: "blue" }, { color: "blue" }];
 
   const visualCubes = cubes.map((cube) => {
-    return <img className="cubes" src={redcube} />;
+    //switch to link color with cube
+    let visualCube;
+    switch (cube.color) {
+      case "blue":
+        visualCube = bluecube;
+        break;
+      case "black":
+        visualCube = blackcube;
+        break;
+      case "yellow":
+        visualCube = yellowcube;
+        break;
+      case "red":
+        visualCube = redcube;
+        break;
+    }
+
+    return <img key={nanoid()} className="cubes" src={visualCube} />;
   });
 
   return (

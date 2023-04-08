@@ -102,6 +102,19 @@ body {
   width: 20px;
 }
 
+.countryVirus-div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50px;
+  justify-content: center;
+  position: absolute;
+  z-index: 90000;
+  top: -10px;
+  left: -10px;
+  cursor: pointer;
+}
+
 .cubes {
   width: 20px;
+  margin: -5px;
 }
