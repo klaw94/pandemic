@@ -6,7 +6,6 @@ import ferries from "../data/ferries";
 import infectionCards from "../data/infectionCards";
 import Country from "./Country";
 import EnumGamesStages from "../data/enumGamesStages";
-import usePrevious from "../UsePrevious";
 
 function shuffle(deck) {
   // for 1000 turns
