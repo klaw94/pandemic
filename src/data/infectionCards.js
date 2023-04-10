@@ -136,66 +136,66 @@ const infectionCards = [
     name: EnumCountries.Algiers,
     photo: "africa.png",
 
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Istanbul,
     photo: "europe.png",
 
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Cairo,
     photo: "africa.png",
 
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Moscow,
     photo: "europe.png",
 
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Baghdad,
     photo: "middleeast.png",
 
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Tehran,
     photo: "middleeast.png",
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Riyadh,
     photo: "middleeast.png",
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Karachi,
     photo: "middleeast.png",
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Mumbai,
     photo: "middleeast.png",
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Delhi,
     photo: "middleeast.png",
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Chennai,
     photo: "middleeast.png",
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Kolkata,
     photo: "middleeast.png",
-    color: "white",
+    color: "black",
   },
   {
     name: EnumCountries.Jakarta,

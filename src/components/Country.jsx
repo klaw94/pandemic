@@ -7,9 +7,7 @@ import yellowcube from "../assets/yellowcube.png";
 import researchCenter from "../assets/hospital.png";
 
 export default function Country(props) {
-  const cubes = [{ color: "blue" }, { color: "blue" }, { color: "blue" }];
-
-  const visualCubes = cubes.map((cube) => {
+  const visualCubes = props.country.infectionCubes.map((cube) => {
     //switch to link color with cube
     let visualCube;
     switch (cube.color) {
@@ -17,6 +15,7 @@ export default function Country(props) {
         visualCube = bluecube;
         break;
       case "black":
+      case "white":
         visualCube = blackcube;
         break;
       case "yellow":

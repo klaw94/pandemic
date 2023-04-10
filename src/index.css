@@ -76,7 +76,7 @@ body {
   background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: bottom -15px right 10px;
+  background-position: top 0 right 0;
   position: absolute;
   right: 40px;
   outline: 1px solid black;

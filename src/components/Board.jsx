@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import countries from "../data/countries";
 import { nanoid } from "nanoid";
 import lines from "../data/lines";
 import ferries from "../data/ferries";
 import infectionCards from "../data/infectionCards";
 import Country from "./Country";
+import EnumGamesStages from "../data/enumGamesStages";
+import usePrevious from "../UsePrevious";
 
 function shuffle(deck) {
   // for 1000 turns
@@ -21,15 +23,96 @@ function shuffle(deck) {
 }
 
 export default function Board() {
-  const [infectionCardsDeck, setInfectionCardsDeck] = useState(infectionCards);
+  const [infectionCardsDeck, setInfectionCardsDeck] = useState(
+    shuffle(infectionCards)
+  );
+  // const [prevArray, setPrevArray] = useState(infectionCardsDeck);
   const [infectionCardsDiscard, setInfectionCardsDiscard] = useState([]);
+  const [countriesData, setCountriesData] = useState(countries);
+  const [gameStatus, setGameStatus] = useState(
+    EnumGamesStages.PreparationRound
+  );
+  let [drawnInfectionCard, setDrawnInfectionCard] = useState();
+
+  console.log(drawnInfectionCard);
+  // const prevCountRef = useRef();
+  // useEffect(() => {
+  //   //assign the ref's current value to the count Hook
+  //   prevCountRef.current = infectionCardsDeck;
+  // }, [infectionCardsDeck]); //run this code when the value of infection deck changes
 
   useEffect(() => {
-    setInfectionCardsDeck((prevValue) => shuffle(prevValue));
-  }, []);
-  console.log(infectionCardsDeck);
+    if (gameStatus === EnumGamesStages.PreparationRound) {
+      // setInfectionCardsDeck((prevValue) => shuffle(prevValue));
+      // drawInfectionCard();
+      // drawInfectionCard();
+      //console.log(i);
+      executeFirstRoundOfInfection();
+      //  }
+      //setGameStatus(EnumGamesStages.PlayersTurn);
+    }
+  }, [gameStatus]);
 
-  const visualCountries = countries.map((country) => {
+  console.log(infectionCardsDiscard);
+
+  function executeFirstRoundOfInfection() {
+    const drawnCards = [];
+    const deck = infectionCardsDeck;
+
+    //The first 3 cards get 3 cubes
+    for (let i = 0; i < 3; i++) {
+      const card = deck.pop();
+      drawnCards.push(card);
+      //For visual effect
+      setTimeout(() => {
+        addInfectionCube(card, 3);
+
+        setInfectionCardsDiscard((prevValue) => [...prevValue, card]);
+      }, (i + 1) * 1000);
+    }
+    //The second 3 cards get 2 cubes
+    for (let i = 0; i < 3; i++) {
+      const card = deck.pop();
+      drawnCards.push(card);
+
+      setTimeout(() => {
+        addInfectionCube(card, 2);
+        setInfectionCardsDiscard((prevValue) => [...prevValue, card]);
+      }, (i + 4) * 1000);
+    }
+    //The third 3 cards get 1 cubes
+    for (let i = 0; i < 3; i++) {
+      const card = deck.pop();
+      drawnCards.push(card);
+      setTimeout(() => {
+        addInfectionCube(card, 1);
+
+        setInfectionCardsDiscard((prevValue) => [...prevValue, card]);
+      }, (i + 7) * 1000);
+    }
+
+    setInfectionCardsDeck(deck);
+  }
+
+  function addInfectionCube(card, nCube) {
+    let cubeArray = [];
+    for (let i = 0; i < nCube; i++) {
+      cubeArray.push({ color: card.color });
+    }
+    console.log(cubeArray);
+    setCountriesData((prevValue) => {
+      return prevValue.map((c) =>
+        c.name === card.name
+          ? {
+              ...c,
+              infectionCubes: [...c.infectionCubes, ...cubeArray],
+            }
+          : c
+      );
+    });
+  }
+
+  const visualCountries = countriesData.map((country) => {
     const stylesDiv = { left: country.left, top: country.top };
     const styleKnop = { backgroundColor: country.color };
     const stylesName = { left: country.left, top: country.top };
@@ -101,7 +184,7 @@ export default function Board() {
         borderRight: `20px solid ${card.color}`,
       };
       return (
-        <div className="infectionCard" style={styles}>
+        <div className="infectionCard" key={nanoid()} style={styles}>
           <h1>{card.name}</h1>
         </div>
       );
