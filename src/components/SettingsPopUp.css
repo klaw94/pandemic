@@ -1,0 +1,15 @@
+.settingsPopUp {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  bottom: 10%;
+  width: 75%;
+  height: fit-content;
+  z-index: 90909090909090909090990;
+  background-color: rgb(15, 15, 55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+  color: white;
+}

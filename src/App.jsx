@@ -1,14 +1,15 @@
-import { useState } from 'react'
-import './App.css'
-import Board from './components/Board'
+import { useState } from "react";
+import "./App.css";
+import Board from "./components/Board";
+import SettingsPopUp from "./components/SettingsPopUp";
 
 function App() {
-
   return (
     <div className="App">
-      <Board />
+      <SettingsPopUp />
+      <Board players="" epidemicCards={5} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
