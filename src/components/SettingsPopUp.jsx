@@ -18,8 +18,17 @@ export default function SettingsPopUp(props) {
     setselectAPlayerDiv(playersFieldData);
   }, [nPlayers]);
 
-  function handleChange(event) {
+  function handleChangeNPlayers(event) {
     setNPlayers(event.target.value);
+  }
+
+  function handleChangeDifficulty(event) {
+    setFormData((prevData) => {
+      return {
+        ...prevData,
+        [event.target.name]: event.target.value,
+      };
+    });
   }
 
   const visualSelectPlayerDivs = selectAPlayerDiv.map((div) => (
@@ -35,7 +44,7 @@ export default function SettingsPopUp(props) {
         <select
           name={"nPlayer"}
           id="selectList"
-          onChange={handleChange}
+          onChange={handleChangeNPlayers}
           value={nPlayers}
         >
           <option>--Choose--</option>
@@ -43,7 +52,22 @@ export default function SettingsPopUp(props) {
           <option value={3}>Three</option>
           <option value={4}>Four</option>
         </select>
-        <div>{visualSelectPlayerDivs}</div>
+      </div>
+      <div className="selectPlayersDiv--div">{visualSelectPlayerDivs}</div>
+      <h3>Select the difficulty</h3>
+
+      <div className="input-field">
+        <select
+          name={"difficulty"}
+          id="selectList"
+          onChange={handleChangeDifficulty}
+          value={formData.difficulty}
+        >
+          <option>--Choose--</option>
+          <option value={4}>Easy</option>
+          <option value={5}>Medium</option>
+          <option value={6}>Difficult</option>
+        </select>
       </div>
     </div>
   );

@@ -13,3 +13,7 @@
   border-radius: 6px;
   color: white;
 }
+
+.selectPlayersDiv--div {
+  display: flex;
+}
