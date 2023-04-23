@@ -19,7 +19,7 @@ export default function CharacterDisplayMiniPopUp(props) {
 
   return (
     <div className="characterDisplayMiniPopUp">
-      <h1>{props.title}</h1>
+      <h1>{`Player ${props.player}`}</h1>
       <div className="characterDisplayMiniPopUp">{visualCharacterCards}</div>
       <button>select</button>
     </div>

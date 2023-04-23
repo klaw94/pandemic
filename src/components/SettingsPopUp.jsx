@@ -33,15 +33,19 @@ export default function SettingsPopUp(props) {
     });
   }
 
-  const visualSelectPlayerDivs = selectAPlayerDiv.map((div) => (
+  const visualSelectPlayerDivs = selectAPlayerDiv.map((div, index) => (
     <SelectPlayerDiv
       key={div.title}
       title={div.title}
       triggerCharacterDisplay={triggerCharacterDisplay}
+      index={index + 1}
     />
   ));
-  function triggerCharacterDisplay() {
-    setCharacterDisplayMode((prevValue) => !prevValue);
+  function triggerCharacterDisplay(index) {
+    console.log(index);
+    setCharacterDisplayMode((prevValue) =>
+      prevValue === index && prevValue !== false ? false : index
+    );
   }
 
   return (
@@ -62,7 +66,9 @@ export default function SettingsPopUp(props) {
           <option value={4}>Four</option>
         </select>
       </div>
-      {characterDisplayMode && <CharacterDisplayMiniPopUp />}
+      {characterDisplayMode !== false && (
+        <CharacterDisplayMiniPopUp player={characterDisplayMode} />
+      )}
 
       <div className="selectPlayersDiv--div">{visualSelectPlayerDivs}</div>
       <h3>Select the difficulty</h3>
