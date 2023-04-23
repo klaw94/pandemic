@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./SettingsPopUp.css";
 import SelectPlayerDiv from "./SelectPlayerDiv";
+import CharacterDisplayMiniPopUp from "./CharactersDisplayMiniPopUp";
 
 export default function SettingsPopUp(props) {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ export default function SettingsPopUp(props) {
   });
   const [selectAPlayerDiv, setselectAPlayerDiv] = useState([]);
   const [nPlayers, setNPlayers] = useState(0);
+  const [characterDisplayMode, setCharacterDisplayMode] = useState(false);
 
   useEffect(() => {
     let playersFieldData = [];
@@ -32,8 +34,15 @@ export default function SettingsPopUp(props) {
   }
 
   const visualSelectPlayerDivs = selectAPlayerDiv.map((div) => (
-    <SelectPlayerDiv key={div.title} title={div.title} />
+    <SelectPlayerDiv
+      key={div.title}
+      title={div.title}
+      triggerCharacterDisplay={triggerCharacterDisplay}
+    />
   ));
+  function triggerCharacterDisplay() {
+    setCharacterDisplayMode((prevValue) => !prevValue);
+  }
 
   return (
     <div className="settingsPopUp">
@@ -53,6 +62,8 @@ export default function SettingsPopUp(props) {
           <option value={4}>Four</option>
         </select>
       </div>
+      {characterDisplayMode && <CharacterDisplayMiniPopUp />}
+
       <div className="selectPlayersDiv--div">{visualSelectPlayerDivs}</div>
       <h3>Select the difficulty</h3>
 

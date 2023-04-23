@@ -1,17 +1,33 @@
 .characterCard {
   display: flex;
   flex-direction: column;
+  height: 200px;
+  width: 150px;
   color: black;
+  background-repeat: no-repeat;
+  background-size: 100px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 6px;
+  /* background-color: white; */
 }
 
-.small {
-  height: 100px;
-  width: 30px;
+.characterCard h5 {
+  text-align: center;
+  font-size: 0.7em;
+  margin: 0;
+  margin-top: 10px;
 }
 
-.small h5 {
-  font-size: 0.4em;
+.characterCard p {
+  font-size: 0.5em;
+  margin-top: 10px;
+  top: 100px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
-.small > p {
-  font-size: 0.4em;
+
+.characterCard img {
+  margin-top: 10px;
+  height: 30%;
 }
