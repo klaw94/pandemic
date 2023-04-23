@@ -33,7 +33,6 @@ export default function Board() {
   );
   let [drawnInfectionCard, setDrawnInfectionCard] = useState();
 
-  console.log(drawnInfectionCard);
   // const prevCountRef = useRef();
   // useEffect(() => {
   //   //assign the ref's current value to the count Hook
@@ -52,7 +51,7 @@ export default function Board() {
     }
   }, [gameStatus]);
 
-  console.log(infectionCardsDiscard);
+  //console.log(infectionCardsDiscard);
 
   function executeFirstRoundOfInfection() {
     const drawnCards = [];
@@ -98,7 +97,6 @@ export default function Board() {
     for (let i = 0; i < nCube; i++) {
       cubeArray.push({ color: card.color });
     }
-    console.log(cubeArray);
     setCountriesData((prevValue) => {
       return prevValue.map((c) =>
         c.name === card.name

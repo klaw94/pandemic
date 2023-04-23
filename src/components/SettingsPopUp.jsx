@@ -12,10 +12,17 @@ export default function SettingsPopUp(props) {
   const [nPlayers, setNPlayers] = useState(0);
   const [characterDisplayMode, setCharacterDisplayMode] = useState(false);
 
+  console.log(selectAPlayerDiv);
+
   useEffect(() => {
     let playersFieldData = [];
     for (let i = 0; i < nPlayers; i++) {
-      playersFieldData.push({ title: `Player ${i + 1}`, selected: "false" });
+      playersFieldData.push({
+        title: `Player ${i + 1}`,
+        playerNumber: i + 1,
+        selected: "false",
+        character: "",
+      });
     }
     setselectAPlayerDiv(playersFieldData);
   }, [nPlayers]);
@@ -33,12 +40,24 @@ export default function SettingsPopUp(props) {
     });
   }
 
-  const visualSelectPlayerDivs = selectAPlayerDiv.map((div, index) => (
+  function selectACharacter(playerNumber, characterName) {
+    console.log(characterName);
+    setselectAPlayerDiv((prevValue) =>
+      prevValue.map((player) =>
+        player.playerNumber === playerNumber
+          ? { ...player, character: characterName }
+          : player
+      )
+    );
+  }
+
+  const visualSelectPlayerDivs = selectAPlayerDiv.map((div) => (
     <SelectPlayerDiv
       key={div.title}
       title={div.title}
       triggerCharacterDisplay={triggerCharacterDisplay}
-      index={index + 1}
+      index={div.playerNumber}
+      selected={div.character}
     />
   ));
   function triggerCharacterDisplay(index) {
@@ -67,7 +86,10 @@ export default function SettingsPopUp(props) {
         </select>
       </div>
       {characterDisplayMode !== false && (
-        <CharacterDisplayMiniPopUp player={characterDisplayMode} />
+        <CharacterDisplayMiniPopUp
+          player={characterDisplayMode}
+          selectACharacter={selectACharacter}
+        />
       )}
 
       <div className="selectPlayersDiv--div">{visualSelectPlayerDivs}</div>

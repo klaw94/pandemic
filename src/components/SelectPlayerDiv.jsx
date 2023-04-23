@@ -3,7 +3,6 @@ import "./SelectPlayerDiv.css";
 import CharacterDisplayMiniPopUP from "./CharactersDisplayMiniPopUp";
 
 export default function SelectPlayerDiv(props) {
-  console.log(props.index);
   return (
     <div>
       {" "}

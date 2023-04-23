@@ -35,7 +35,7 @@ const characterCardsData = [
   },
   {
     name: EnumCharacters.Operator,
-    color: "green",
+    color: "greenyellow",
     photo: "operations.png",
     icon: "lightgreenpawn.png",
     description:
