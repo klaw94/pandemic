@@ -13,7 +13,7 @@ export default function SettingsPopUp(props) {
   useEffect(() => {
     let playersFieldData = [];
     for (let i = 0; i < nPlayers; i++) {
-      playersFieldData.push({ title: `Player ${i + 1}` });
+      playersFieldData.push({ title: `Player ${i + 1}`, selected: "false" });
     }
     setselectAPlayerDiv(playersFieldData);
   }, [nPlayers]);
@@ -32,7 +32,7 @@ export default function SettingsPopUp(props) {
   }
 
   const visualSelectPlayerDivs = selectAPlayerDiv.map((div) => (
-    <SelectPlayerDiv title={div.title} />
+    <SelectPlayerDiv key={div.title} title={div.title} />
   ));
 
   return (

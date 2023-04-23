@@ -1,0 +1,17 @@
+.characterCard {
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+.small {
+  height: 100px;
+  width: 30px;
+}
+
+.small h5 {
+  font-size: 0.4em;
+}
+.small > p {
+  font-size: 0.4em;
+}
