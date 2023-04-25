@@ -8,11 +8,11 @@ export default function SettingsPopUp(props) {
     players: [],
     difficulty: 0,
   });
-  const [selectAPlayerDiv, setselectAPlayerDiv] = useState([]);
+  const [playersData, setPlayersData] = useState([]);
   const [nPlayers, setNPlayers] = useState(0);
   const [characterDisplayMode, setCharacterDisplayMode] = useState(false);
 
-  console.log(selectAPlayerDiv);
+  console.log(playersData);
 
   useEffect(() => {
     let playersFieldData = [];
@@ -20,11 +20,11 @@ export default function SettingsPopUp(props) {
       playersFieldData.push({
         title: `Player ${i + 1}`,
         playerNumber: i + 1,
-        selected: "false",
+        pawn: "",
         character: "",
       });
     }
-    setselectAPlayerDiv(playersFieldData);
+    setPlayersData(playersFieldData);
   }, [nPlayers]);
 
   function handleChangeNPlayers(event) {
@@ -40,28 +40,27 @@ export default function SettingsPopUp(props) {
     });
   }
 
-  function selectACharacter(playerNumber, characterName) {
+  function selectACharacter(playerNumber, characterName, characterIcon) {
     console.log(characterName);
-    setselectAPlayerDiv((prevValue) =>
+    setPlayersData((prevValue) =>
       prevValue.map((player) =>
         player.playerNumber === playerNumber
-          ? { ...player, character: characterName }
+          ? { ...player, character: characterName, pawn: characterIcon }
           : player
       )
     );
   }
 
-  const visualSelectPlayerDivs = selectAPlayerDiv.map((div) => (
+  const visualSelectPlayerDivs = playersData.map((div) => (
     <SelectPlayerDiv
       key={div.title}
       title={div.title}
       triggerCharacterDisplay={triggerCharacterDisplay}
       index={div.playerNumber}
-      selected={div.character}
+      selected={div.pawn}
     />
   ));
   function triggerCharacterDisplay(index) {
-    console.log(index);
     setCharacterDisplayMode((prevValue) =>
       prevValue === index && prevValue !== false ? false : index
     );
@@ -88,6 +87,9 @@ export default function SettingsPopUp(props) {
       {characterDisplayMode !== false && (
         <CharacterDisplayMiniPopUp
           player={characterDisplayMode}
+          selectedPlayer={playersData.find(
+            (data) => data.playerNumber === characterDisplayMode
+          )}
           selectACharacter={selectACharacter}
         />
       )}

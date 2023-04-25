@@ -12,7 +12,11 @@ export default function CharacterCard(props) {
   };
 
   return (
-    <div className="characterCard" style={styles} onClick={props.handleClick}>
+    <div
+      className={`characterCard ${props.className}`}
+      style={styles}
+      onClick={props.handleClick}
+    >
       <h5>{props.name}</h5>
       <img src={`../../../${props.photo}`} alt="" />
       <p>{props.description}</p>

@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 import "./SelectPlayerDiv.css";
 
 export default function CharacterDisplayMiniPopUp(props) {
-  console.log(props);
+  console.log(characterCardsData);
   const visualCharacterCards = characterCardsData.map((card) => {
     return (
       <CharacterCard
@@ -14,7 +14,12 @@ export default function CharacterDisplayMiniPopUp(props) {
         name={card.name}
         description={card.description}
         color={card.color}
-        handleClick={() => props.selectACharacter(props.player, card.name)}
+        handleClick={() =>
+          props.selectACharacter(props.player, card.name, card.icon)
+        }
+        className={
+          props.selectedPlayer.character === card.name ? "selected" : ""
+        }
       />
     );
   });
@@ -23,7 +28,6 @@ export default function CharacterDisplayMiniPopUp(props) {
     <div className="characterDisplayMiniPopUp">
       <h1>{`Player ${props.player}`}</h1>
       <div className="characterDisplayMiniPopUp">{visualCharacterCards}</div>
-      <button>select</button>
     </div>
   );
 }
