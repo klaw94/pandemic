@@ -17,3 +17,14 @@
 .selectPlayersDiv--div {
   display: flex;
 }
+
+.settingsPopUp button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.error {
+  color: red;
+  margin-bottom: -10px;
+  margin-top: 20px;
+}

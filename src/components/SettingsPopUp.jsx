@@ -5,12 +5,12 @@ import CharacterDisplayMiniPopUp from "./CharactersDisplayMiniPopUp";
 
 export default function SettingsPopUp(props) {
   const [formData, setFormData] = useState({
-    players: [],
     difficulty: 0,
   });
   const [playersData, setPlayersData] = useState([]);
   const [nPlayers, setNPlayers] = useState(0);
   const [characterDisplayMode, setCharacterDisplayMode] = useState(false);
+  const [invalidSubmission, setInvalidSubmission] = useState(false);
 
   useEffect(() => {
     let playersFieldData = [];
@@ -20,10 +20,15 @@ export default function SettingsPopUp(props) {
         playerNumber: i + 1,
         pawn: "",
         character: "",
+        repetated: false,
       });
     }
     setPlayersData(playersFieldData);
   }, [nPlayers]);
+
+  useEffect(() => {
+    setInvalidSubmission(false);
+  }, [playersData, formData]);
 
   function handleChangeNPlayers(event) {
     setNPlayers(event.target.value);
@@ -53,7 +58,6 @@ export default function SettingsPopUp(props) {
   }
 
   const visualSelectPlayerDivs = playersData.map((div) => {
-    console.log(div);
     let repetition = "";
     let repeatedPlayersArray = playersData.filter(
       (player) => player.character === div.character
@@ -76,6 +80,40 @@ export default function SettingsPopUp(props) {
     setCharacterDisplayMode((prevValue) =>
       prevValue === index && prevValue !== false ? false : index
     );
+  }
+
+  function hasDuplicateCharacters(playersInfo) {
+    const characterCount = {}; // Create an empty object to store the count of each character
+    for (const info of playersInfo) {
+      // Iterate over the array of objects
+      const character = info.character; // Get the nameOfCharacter property of the current object
+      if (characterCount[character]) {
+        // If the character has already been counted
+        //this expression will check if the characterCount object has a property with a key that matches the value of character.
+        characterCount[character]++; // Increment the count for that character
+      } else {
+        // Otherwise, if it hasn't been counted yet
+        characterCount[character] = 1; // Initialize the count to 1. Basically you create a object like {"characterName": 1}
+      }
+    }
+    for (const character in characterCount) {
+      // Iterate over the KEYS of the characterCount object
+      if (characterCount[character] > 1) {
+        // If any count is greater than 1
+        return true; // Return true (there are duplicates)
+      }
+    }
+    return false; // If we've gone through all the characters and haven't found duplicates, return false
+  }
+
+  function submit() {
+    if (
+      hasDuplicateCharacters(playersData) ||
+      Number(formData.difficulty) === 0 ||
+      playersData.filter((info) => info.character === "").length > 0
+    ) {
+      setInvalidSubmission(true);
+    }
   }
 
   return (
@@ -117,12 +155,18 @@ export default function SettingsPopUp(props) {
           onChange={handleChangeDifficulty}
           value={formData.difficulty}
         >
-          <option>--Choose--</option>
+          <option value={0}>--Choose--</option>
           <option value={4}>Easy</option>
           <option value={5}>Medium</option>
           <option value={6}>Difficult</option>
         </select>
       </div>
+      {invalidSubmission && (
+        <span className="error">
+          Please select different characters and a difficulty level
+        </span>
+      )}
+      <button onClick={submit}>Start!</button>
     </div>
   );
 }
