@@ -176,6 +176,7 @@ export default function Board() {
     (card, index) => {
       const styles = {
         backgroundImage: `url(/${card.photo})`,
+        top: 30 + Math.round(index / 3) * 5,
         borderBottom: `20px solid ${card.color}`,
         borderRight: `20px solid ${card.color}`,
       };
