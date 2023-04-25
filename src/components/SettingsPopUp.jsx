@@ -12,8 +12,6 @@ export default function SettingsPopUp(props) {
   const [nPlayers, setNPlayers] = useState(0);
   const [characterDisplayMode, setCharacterDisplayMode] = useState(false);
 
-  console.log(playersData);
-
   useEffect(() => {
     let playersFieldData = [];
     for (let i = 0; i < nPlayers; i++) {
@@ -31,6 +29,10 @@ export default function SettingsPopUp(props) {
     setNPlayers(event.target.value);
   }
 
+  function toggleCharacterDisplay() {
+    setCharacterDisplayMode(false);
+  }
+
   function handleChangeDifficulty(event) {
     setFormData((prevData) => {
       return {
@@ -41,7 +43,6 @@ export default function SettingsPopUp(props) {
   }
 
   function selectACharacter(playerNumber, characterName, characterIcon) {
-    console.log(characterName);
     setPlayersData((prevValue) =>
       prevValue.map((player) =>
         player.playerNumber === playerNumber
@@ -51,15 +52,26 @@ export default function SettingsPopUp(props) {
     );
   }
 
-  const visualSelectPlayerDivs = playersData.map((div) => (
-    <SelectPlayerDiv
-      key={div.title}
-      title={div.title}
-      triggerCharacterDisplay={triggerCharacterDisplay}
-      index={div.playerNumber}
-      selected={div.pawn}
-    />
-  ));
+  const visualSelectPlayerDivs = playersData.map((div) => {
+    console.log(div);
+    let repetition = "";
+    let repeatedPlayersArray = playersData.filter(
+      (player) => player.character === div.character
+    );
+    if (repeatedPlayersArray && repeatedPlayersArray.length > 1) {
+      repetition = "repeated";
+    }
+    return (
+      <SelectPlayerDiv
+        key={div.title}
+        title={div.title}
+        triggerCharacterDisplay={triggerCharacterDisplay}
+        index={div.playerNumber}
+        selected={div.pawn}
+        repeated={repetition}
+      />
+    );
+  });
   function triggerCharacterDisplay(index) {
     setCharacterDisplayMode((prevValue) =>
       prevValue === index && prevValue !== false ? false : index
@@ -91,6 +103,7 @@ export default function SettingsPopUp(props) {
             (data) => data.playerNumber === characterDisplayMode
           )}
           selectACharacter={selectACharacter}
+          toggleCharacterDisplay={toggleCharacterDisplay}
         />
       )}
 

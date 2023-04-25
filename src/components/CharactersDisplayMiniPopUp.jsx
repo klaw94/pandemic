@@ -28,6 +28,7 @@ export default function CharacterDisplayMiniPopUp(props) {
     <div className="characterDisplayMiniPopUp">
       <h1>{`Player ${props.player}`}</h1>
       <div className="characterDisplayMiniPopUp">{visualCharacterCards}</div>
+      <button onClick={props.toggleCharacterDisplay}>Close</button>
     </div>
   );
 }

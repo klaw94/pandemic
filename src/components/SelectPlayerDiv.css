@@ -28,3 +28,8 @@
   width: 30px;
   margin-bottom: 5px;
 }
+
+.repeated {
+  border: 3px solid red;
+  border-radius: 6px;
+}
