@@ -5,6 +5,7 @@ import CharacterDisplayMiniPopUp from "./CharactersDisplayMiniPopUp";
 
 export default function SettingsPopUp(props) {
   const [formData, setFormData] = useState({
+    player: [],
     difficulty: 0,
   });
   const [playersData, setPlayersData] = useState([]);
@@ -18,8 +19,7 @@ export default function SettingsPopUp(props) {
       playersFieldData.push({
         title: `Player ${i + 1}`,
         playerNumber: i + 1,
-        pawn: "",
-        character: "",
+        character: {},
         repetated: false,
       });
     }
@@ -47,11 +47,11 @@ export default function SettingsPopUp(props) {
     });
   }
 
-  function selectACharacter(playerNumber, characterName, characterIcon) {
+  function selectACharacter(playerNumber, card) {
     setPlayersData((prevValue) =>
       prevValue.map((player) =>
         player.playerNumber === playerNumber
-          ? { ...player, character: characterName, pawn: characterIcon }
+          ? { ...player, character: card }
           : player
       )
     );
@@ -60,7 +60,7 @@ export default function SettingsPopUp(props) {
   const visualSelectPlayerDivs = playersData.map((div) => {
     let repetition = "";
     let repeatedPlayersArray = playersData.filter(
-      (player) => player.character === div.character
+      (player) => player.character.name === div.character.name
     );
     if (repeatedPlayersArray && repeatedPlayersArray.length > 1) {
       repetition = "repeated";
@@ -71,7 +71,7 @@ export default function SettingsPopUp(props) {
         title={div.title}
         triggerCharacterDisplay={triggerCharacterDisplay}
         index={div.playerNumber}
-        selected={div.pawn}
+        selected={div.character.icon}
         repeated={repetition}
       />
     );
@@ -86,7 +86,7 @@ export default function SettingsPopUp(props) {
     const characterCount = {}; // Create an empty object to store the count of each character
     for (const info of playersInfo) {
       // Iterate over the array of objects
-      const character = info.character; // Get the nameOfCharacter property of the current object
+      const character = info.character.name; // Get the nameOfCharacter property of the current object
       if (characterCount[character]) {
         // If the character has already been counted
         //this expression will check if the characterCount object has a property with a key that matches the value of character.
@@ -110,11 +110,29 @@ export default function SettingsPopUp(props) {
     if (
       hasDuplicateCharacters(playersData) ||
       Number(formData.difficulty) === 0 ||
-      playersData.filter((info) => info.character === "").length > 0
+      playersData.some((obj) => isObjectEmpty(obj)) ||
+      nPlayers < 2
     ) {
       setInvalidSubmission(true);
     }
   }
+
+  // Recursive function to test if an object is empty
+  const isObjectEmpty = (obj) => {
+    if (Object.keys(obj).length === 0) {
+      return true; // object is empty
+    }
+
+    for (let key in obj) {
+      if (typeof obj[key] === "object") {
+        if (isObjectEmpty(obj[key])) {
+          return true; // nested object is empty
+        }
+      }
+    }
+
+    return false; // object is not empty
+  };
 
   return (
     <div className="settingsPopUp">

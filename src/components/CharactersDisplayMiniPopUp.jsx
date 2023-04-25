@@ -14,11 +14,9 @@ export default function CharacterDisplayMiniPopUp(props) {
         name={card.name}
         description={card.description}
         color={card.color}
-        handleClick={() =>
-          props.selectACharacter(props.player, card.name, card.icon)
-        }
+        handleClick={() => props.selectACharacter(props.player, card)}
         className={
-          props.selectedPlayer.character === card.name ? "selected" : ""
+          props.selectedPlayer.character.name === card.name ? "selected" : ""
         }
       />
     );
