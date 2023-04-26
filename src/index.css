@@ -6,7 +6,7 @@ body {
   background-image: url(./assets/world-map-map.png);
   background-repeat: no-repeat;
   background-size: contain;
-  height: 1000px;
+  height: 1050px;
   width: 1200px;
   position: relative;
 }
@@ -133,4 +133,13 @@ body {
 
 .pawnInCountry {
   width: 20px;
+}
+
+.playersMats-div {
+  position: absolute;
+  bottom: -10px;
+  display: flex;
+  height: 200px;
+  width: 100%;
+  justify-content: space-evenly;
 }
