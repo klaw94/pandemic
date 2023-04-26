@@ -6,7 +6,7 @@ import ferries from "../data/ferries";
 import infectionCards from "../data/infectionCards";
 import Country from "./Country";
 import EnumGamesStages from "../data/enumGamesStages";
-import SelectPlayerDiv from "./SelectPlayerDiv";
+import PlayerMat from "./PlayerMat";
 
 function shuffle(deck) {
   // for 1000 turns
@@ -206,6 +206,12 @@ export default function Board(props) {
     }
   );
 
+  console.log(playersData);
+
+  const visualPlayerMat = playersData.map((player) => (
+    <PlayerMat card={player} key={nanoid()} />
+  ));
+
   return (
     <div className="board">
       <div className="board--infectionCardsCorner">
@@ -220,6 +226,7 @@ export default function Board(props) {
       {visualLines}
       {visualMapLines}
       {visualFerries}
+      <div className="playersMats-div">{visualPlayerMat}</div>
     </div>
   );
 }

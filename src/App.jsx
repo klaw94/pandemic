@@ -22,6 +22,7 @@ function App() {
           epidemicCards={gameInfo.difficulty}
         />
       )}
+      <div></div>
     </div>
   );
 }
