@@ -6,6 +6,7 @@ import ferries from "../data/ferries";
 import infectionCards from "../data/infectionCards";
 import Country from "./Country";
 import EnumGamesStages from "../data/enumGamesStages";
+import SelectPlayerDiv from "./SelectPlayerDiv";
 
 function shuffle(deck) {
   // for 1000 turns
@@ -21,7 +22,7 @@ function shuffle(deck) {
   return deck;
 }
 
-export default function Board() {
+export default function Board(props) {
   const [infectionCardsDeck, setInfectionCardsDeck] = useState(
     shuffle(infectionCards)
   );
@@ -31,23 +32,40 @@ export default function Board() {
   const [gameStatus, setGameStatus] = useState(
     EnumGamesStages.PreparationRound
   );
-  let [drawnInfectionCard, setDrawnInfectionCard] = useState();
+  const [playersData, setPlayersData] = useState([]);
+  useEffect(() => {
+    if (playersData && playersData.length > 0) {
+      setCountriesData((prevValue) => {
+        {
+          let newCountryArray = [];
+          for (let i = 0; i < prevValue.length; i++) {
+            let playersPawns = [];
 
-  // const prevCountRef = useRef();
-  // useEffect(() => {
-  //   //assign the ref's current value to the count Hook
-  //   prevCountRef.current = infectionCardsDeck;
-  // }, [infectionCardsDeck]); //run this code when the value of infection deck changes
+            for (let x = 0; x < playersData.length; x++) {
+              if (prevValue[i].name === playersData[x].location) {
+                playersPawns.push(playersData[x].icon);
+              } else if (x === playersData.length - 1) {
+                newCountryArray.push(prevValue[i]);
+              }
+            }
+            newCountryArray.push({
+              ...prevValue[i],
+              players: [...playersPawns],
+            });
+          }
+          return newCountryArray;
+        }
+      });
+    }
+  }, [playersData]); //run this code when the value of infection deck changes
+
+  useEffect(() => {
+    setPlayersData(props.playersData);
+  }, []);
 
   useEffect(() => {
     if (gameStatus === EnumGamesStages.PreparationRound) {
-      // setInfectionCardsDeck((prevValue) => shuffle(prevValue));
-      // drawInfectionCard();
-      // drawInfectionCard();
-      //console.log(i);
       executeFirstRoundOfInfection();
-      //  }
-      //setGameStatus(EnumGamesStages.PlayersTurn);
     }
   }, [gameStatus]);
 

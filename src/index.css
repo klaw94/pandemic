@@ -118,3 +118,19 @@ body {
   width: 20px;
   margin: -5px;
 }
+
+.countryPawn-div {
+  display: flex;
+  /* flex-wrap: wrap; */
+  width: 50px;
+  justify-content: center;
+  position: absolute;
+  z-index: 90000;
+  top: 0px;
+  left: -15px;
+  cursor: pointer;
+}
+
+.pawnInCountry {
+  width: 20px;
+}

@@ -114,6 +114,9 @@ export default function SettingsPopUp(props) {
       nPlayers < 2
     ) {
       setInvalidSubmission(true);
+    } else {
+      let players = playersData.map((p) => p.character);
+      props.handleSubmit(players, Number(formData.difficulty));
     }
   }
 

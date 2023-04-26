@@ -5,7 +5,6 @@ import { nanoid } from "nanoid";
 import "./SelectPlayerDiv.css";
 
 export default function CharacterDisplayMiniPopUp(props) {
-  console.log(characterCardsData);
   const visualCharacterCards = characterCardsData.map((card) => {
     return (
       <CharacterCard

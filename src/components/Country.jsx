@@ -5,6 +5,7 @@ import bluecube from "../assets/bluecube.png";
 import redcube from "../assets/redcube.png";
 import yellowcube from "../assets/yellowcube.png";
 import researchCenter from "../assets/hospital.png";
+import EnumCountries from "../data/enumCountries";
 
 export default function Country(props) {
   const visualCubes = props.country.infectionCubes.map((cube) => {
@@ -28,6 +29,9 @@ export default function Country(props) {
 
     return <img key={nanoid()} className="cubes" src={visualCube} />;
   });
+  const visualPawns = props.country.players.map((pawn) => (
+    <img key={nanoid()} className="pawnInCountry" src={`./../../${pawn}`} />
+  ));
 
   return (
     <div className="countryDiv" style={props.stylesDiv}>
@@ -44,6 +48,7 @@ export default function Country(props) {
         )}
       </div>
       <div className="countryVirus-div">{visualCubes}</div>
+      <div className="countryPawn-div">{visualPawns}</div>
     </div>
   );
 }

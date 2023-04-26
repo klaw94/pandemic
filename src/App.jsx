@@ -4,10 +4,24 @@ import Board from "./components/Board";
 import SettingsPopUp from "./components/SettingsPopUp";
 
 function App() {
+  const [settingMode, setSettingMode] = useState(true);
+  const [gameInfo, setGameInfo] = useState({ players: [], difficulty: 0 });
+
+  function handleSubmitSettings(players, difficulty) {
+    setGameInfo({ players: [...players], difficulty: difficulty });
+    setSettingMode(false);
+  }
+
   return (
     <div className="App">
-      <SettingsPopUp />
-      <Board players="" epidemicCards={5} />
+      {settingMode ? (
+        <SettingsPopUp handleSubmit={handleSubmitSettings} />
+      ) : (
+        <Board
+          playersData={gameInfo.players}
+          epidemicCards={gameInfo.difficulty}
+        />
+      )}
     </div>
   );
 }
