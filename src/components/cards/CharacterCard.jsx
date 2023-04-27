@@ -1,8 +1,8 @@
-import React from "react";
+import { useState } from "react";
 import "./CharacterCard.css";
 
 export default function CharacterCard(props) {
-  const [zoomed, setZoomed] = useState(false);
+  // const [zoomed, setZoomed] = useState(false);
   //maybe we can get a className for the size in the props.
   //OnClick Selected
   //Selected means speciaStyles with shade.
@@ -12,15 +12,15 @@ export default function CharacterCard(props) {
     backgroundColor: props.color,
   };
 
-  function zoomIn() {
-    setZoomed((prevValue) => !prevValue);
-  }
+  // function zoomIn() {
+  //   setZoomed((prevValue) => !prevValue);
+  // }
 
   return (
     <div
-      className={zoomed ? `characterCard` : `characterCard ${props.className}`}
+      className={`characterCard ${props.className}`}
       style={styles}
-      onClick={propsHandleClick}
+      onClick={props.handleClick}
     >
       <h5>{props.name}</h5>
       <img src={`../../../${props.photo}`} alt="" />
