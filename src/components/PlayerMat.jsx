@@ -2,6 +2,8 @@ import React from "react";
 import CharacterCard from "./cards/characterCard";
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import CountryHandCard from "./cards/CountryHandCard";
+import { EnumCardTypes } from "../data/handCards";
 
 export default function PlayerMat(props) {
   const [cardBig, setCardBig] = useState(false);
@@ -10,6 +12,15 @@ export default function PlayerMat(props) {
     setCardBig((prevValue) => !prevValue);
   }
   console.log(props);
+
+  const visualHandCards = props.card.cards.map((card) =>
+    card.type === EnumCardTypes.Country ? (
+      <CountryHandCard card={card} key={nanoid()} />
+    ) : (
+      <></>
+    )
+  );
+
   return (
     <div>
       <CharacterCard
@@ -21,6 +32,7 @@ export default function PlayerMat(props) {
         handleClick={doNothing}
         className={cardBig ? "" : "small"}
       />
+      {visualHandCards}
     </div>
   );
 }

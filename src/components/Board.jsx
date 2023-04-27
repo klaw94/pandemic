@@ -7,6 +7,12 @@ import infectionCards from "../data/infectionCards";
 import Country from "./Country";
 import EnumGamesStages from "../data/enumGamesStages";
 import PlayerMat from "./PlayerMat";
+import {
+  handCards,
+  epidemicCards,
+  EnumCardTypes,
+  EnumEvents,
+} from "../data/handCards";
 
 function shuffle(deck) {
   // for 1000 turns
@@ -26,13 +32,14 @@ export default function Board(props) {
   const [infectionCardsDeck, setInfectionCardsDeck] = useState(
     shuffle(infectionCards)
   );
-  // const [prevArray, setPrevArray] = useState(infectionCardsDeck);
+  const [handCardsDeck, sethandCardsDeck] = useState([]);
   const [infectionCardsDiscard, setInfectionCardsDiscard] = useState([]);
   const [countriesData, setCountriesData] = useState(countries);
   const [gameStatus, setGameStatus] = useState(
     EnumGamesStages.PreparationRound
   );
   const [playersData, setPlayersData] = useState([]);
+
   useEffect(() => {
     if (playersData && playersData.length > 0) {
       setCountriesData((prevValue) => {
@@ -59,8 +66,41 @@ export default function Board(props) {
     }
   }, [playersData]); //run this code when the value of infection deck changes
 
+  // useEffect(() => {
+  //   setPlayersData(props.playersData);
+
+  // }, []);
+
   useEffect(() => {
-    setPlayersData(props.playersData);
+    let initialDeck = shuffle(handCards);
+    let nPlayer = props.playersData.length;
+    let nCardsPerPlayer;
+    switch (nPlayer) {
+      case 2:
+        nCardsPerPlayer = 4;
+        break;
+      case 3:
+        nCardsPerPlayer = 3;
+        break;
+      case 4:
+        nCardsPerPlayer = 2;
+        break;
+    }
+    let playersHands = [];
+    for (let i = 0; i < props.playersData.length; i++) {
+      let hand = [];
+      for (let x = 0; x < nCardsPerPlayer; x++) {
+        hand.push(initialDeck.pop());
+      }
+      playersHands.push(hand);
+    }
+
+    setPlayersData(
+      props.playersData.map((p, index) => ({
+        ...p,
+        cards: playersHands[index],
+      }))
+    );
   }, []);
 
   useEffect(() => {
@@ -205,8 +245,6 @@ export default function Board(props) {
       );
     }
   );
-
-  console.log(playersData);
 
   const visualPlayerMat = playersData.map((player) => (
     <PlayerMat card={player} key={nanoid()} />

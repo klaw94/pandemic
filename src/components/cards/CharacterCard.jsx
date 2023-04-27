@@ -2,19 +2,9 @@ import { useState } from "react";
 import "./CharacterCard.css";
 
 export default function CharacterCard(props) {
-  // const [zoomed, setZoomed] = useState(false);
-  //maybe we can get a className for the size in the props.
-  //OnClick Selected
-  //Selected means speciaStyles with shade.
-  //It also send info to the parent.
-
   const styles = {
     backgroundColor: props.color,
   };
-
-  // function zoomIn() {
-  //   setZoomed((prevValue) => !prevValue);
-  // }
 
   return (
     <div

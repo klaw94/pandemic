@@ -420,4 +420,4 @@ const epidemicCards = [
   },
 ];
 
-export { handCards, epidemicCards, EnumCardTypes, EnumCardTypes };
+export { handCards, epidemicCards, EnumCardTypes, EnumEvents };
