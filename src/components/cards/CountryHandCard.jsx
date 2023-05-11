@@ -8,6 +8,8 @@ export default function CountryHandCard(props) {
     backgroundImage: `url(/${props.card.photo})`,
     backgroundColor: `${props.card.color}`,
   };
+  const nameSize = props.card.name.length > 9 ? "smallTitle" : "";
+
   const backgroundStyle = { backgroundColor: `${props.card.color}` };
 
   console.log(props.card.color);
@@ -15,7 +17,7 @@ export default function CountryHandCard(props) {
   return (
     <div className={`handCard countryHandCard`} style={styles}>
       <div className="h5Div" style={backgroundStyle}>
-        <h5>{props.card.name}</h5>
+        <h5 className={nameSize}>{props.card.name}</h5>
       </div>
       {props.card.type === EnumCardTypes.Event && (
         <div className="handCard-text">{props.card.text}</div>
