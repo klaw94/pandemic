@@ -1,5 +1,7 @@
 import React from "react";
 import "./HandCard.css";
+import { EnumCardTypes } from "../../data/handCards";
+import { useState } from "react";
 
 export default function CountryHandCard(props) {
   const styles = {
@@ -11,11 +13,16 @@ export default function CountryHandCard(props) {
   console.log(props.card.color);
 
   return (
-    <div className="handCard countryHandCard" style={styles}>
+    <div className={`handCard countryHandCard`} style={styles}>
       <div className="h5Div" style={backgroundStyle}>
         <h5>{props.card.name}</h5>
       </div>
-      <div className="footerDiv" style={backgroundStyle}></div>
+      {props.card.type === EnumCardTypes.Event && (
+        <div className="handCard-text">{props.card.text}</div>
+      )}
+      {props.card.type !== EnumCardTypes.Event && (
+        <div className="footerDiv" style={backgroundStyle}></div>
+      )}
     </div>
   );
 }
