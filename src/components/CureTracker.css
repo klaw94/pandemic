@@ -1,0 +1,22 @@
+.cureTracker {
+  position: absolute;
+  bottom: 200px;
+  right: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cureTracker--counterDiv {
+  display: flex;
+}
+
+.cureImage {
+  width: 60px;
+  margin: 0;
+}
+
+.cureTracker--title {
+  margin: 0;
+  text-align: center;
+}

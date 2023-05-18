@@ -15,6 +15,7 @@ import {
 } from "../data/handCards";
 import InfectionRateCounter from "./InfectionRateCounter";
 import OutbreaksTracker from "./OutbreaksTracker";
+import CureTracker from "./CureTracker";
 
 function shuffle(deck) {
   // for 1000 turns
@@ -50,6 +51,12 @@ export default function Board(props) {
     index: 0,
     values: [0, 1, 2, 3, 4, 5, 6, 7, 8],
   });
+  const [cureTracker, setCureTracker] = useState([
+    { cured: false, photo: "curered" },
+    { cured: false, photo: "cureblue" },
+    { cured: false, photo: "cureyellow" },
+    { cured: false, photo: "cureblue" },
+  ]);
 
   useEffect(() => {
     if (playersData && playersData.length > 0) {
@@ -299,6 +306,7 @@ export default function Board(props) {
       {visualMapLines}
       {visualFerries}
       <OutbreaksTracker data={outbreakTrackerData} />
+      <CureTracker data={cureTracker} />
       <div className="board--handCardsCorner">
         {handCardsDeck.length > 0 && <div className="handCardBack"></div>}
       </div>
