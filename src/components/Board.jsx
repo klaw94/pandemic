@@ -41,6 +41,10 @@ export default function Board(props) {
     EnumGamesStages.PreparationRound
   );
   const [playersData, setPlayersData] = useState([]);
+  const [infectionRateCounterData, setInfectionRateCounterData] = useState({
+    index: 0,
+    values: [2, 2, 2, 3, 3, 4, 4],
+  });
 
   useEffect(() => {
     if (playersData && playersData.length > 0) {
@@ -284,7 +288,7 @@ export default function Board(props) {
           {visualInfectionCardsDiscardPile}
         </div>
       </div>
-      <InfectionRateCounter infectionRateCounter={0} />
+      <InfectionRateCounter data={infectionRateCounterData} />
       {visualCountries}
       {visualLines}
       {visualMapLines}

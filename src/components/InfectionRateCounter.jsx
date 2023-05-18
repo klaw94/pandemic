@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./InfectionRateCounter.css";
 
 export default function InfectionRateCounter(props) {
-  const [values, setValues] = useState([2, 2, 2, 3, 3, 4, 4]);
-
-  const visualInfectionValues = values.map((value, index) => {
-    let className = index === props.infectionRateCounter ? "selectedRate" : "";
+  const visualInfectionValues = props.data.values.map((value, index) => {
+    let className = index === props.data.index ? "selectedRate" : "";
     return (
       <div className="infectionRateCounter--counter">
         <div className={`infectionRateCounter--circle ${className}`}></div>
