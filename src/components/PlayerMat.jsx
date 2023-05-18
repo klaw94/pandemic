@@ -5,6 +5,7 @@ import { useState } from "react";
 import CountryHandCard from "./cards/CountryHandCard";
 import { EnumCardTypes } from "../data/handCards";
 import EventHandCard from "./cards/EventHandCard";
+import "./PlayerMat.css";
 
 export default function PlayerMat(props) {
   const [cardBig, setCardBig] = useState(false);
@@ -28,6 +29,49 @@ export default function PlayerMat(props) {
     )
   );
 
+  const visualRedCards = props.card.cards.map((card) =>
+    card.color === "red" ? (
+      <CountryHandCard key={nanoid()} card={card} />
+    ) : (
+      <></>
+    )
+  );
+  const visualBlueCards = props.card.cards.map((card) =>
+    card.color === "blue" ? (
+      <CountryHandCard key={nanoid()} card={card} />
+    ) : (
+      <></>
+    )
+  );
+
+  const visualYellowCards = props.card.cards.map((card) =>
+    card.color === "yellow" ? (
+      <CountryHandCard key={nanoid()} card={card} />
+    ) : (
+      <></>
+    )
+  );
+  const visualBlackCards = props.card.cards.map((card) =>
+    card.color === "black" ? (
+      <CountryHandCard key={nanoid()} card={card} />
+    ) : (
+      <></>
+    )
+  );
+  const visualEventCards = props.card.cards.map((card) =>
+    card.color === "#b1b133" ? (
+      <EventHandCard
+        key={nanoid()}
+        name={card.name}
+        color={card.color}
+        photo={card.photo}
+        description={card.text}
+      />
+    ) : (
+      <></>
+    )
+  );
+
   return (
     <div className="playerMat">
       <div className="playerMat-cardDiv">
@@ -40,7 +84,11 @@ export default function PlayerMat(props) {
           handleClick={doNothing}
           className={cardBig ? "" : "small"}
         />
-        {visualHandCards}
+        {visualBlueCards}
+        {visualRedCards}
+        {visualYellowCards}
+        {visualBlackCards}
+        {visualEventCards}
       </div>
     </div>
   );
