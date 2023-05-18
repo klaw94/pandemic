@@ -143,3 +143,19 @@ body {
   width: 100%;
   justify-content: space-evenly;
 }
+
+.board--handCardsCorner {
+  display: flex;
+  position: absolute;
+  bottom: 225px;
+  right: 400px;
+}
+
+.handCardBack {
+  width: 75px;
+  height: 100px;
+  background-color: aqua;
+  border-radius: 6px;
+  border: 1px solid black;
+  cursor: pointer;
+}

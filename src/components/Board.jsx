@@ -32,7 +32,8 @@ export default function Board(props) {
   const [infectionCardsDeck, setInfectionCardsDeck] = useState(
     shuffle(infectionCards)
   );
-  const [handCardsDeck, sethandCardsDeck] = useState([]);
+  const [handCardsDeck, setHandCardsDeck] = useState([]);
+  const [handCardsDiscard, setHandCardsDiscard] = useState([]);
   const [infectionCardsDiscard, setInfectionCardsDiscard] = useState([]);
   const [countriesData, setCountriesData] = useState(countries);
   const [gameStatus, setGameStatus] = useState(
@@ -95,6 +96,28 @@ export default function Board(props) {
       playersHands.push(hand);
     }
 
+    //Prepare deck for play.
+    //A portion of the deck is the whole deck divided among the epidemic cards that I have to include
+    const portion = Math.ceil(initialDeck.length / props.epidemicCards);
+    let finalDeck = [];
+    for (let i = 0; i < props.epidemicCards; i++) {
+      let part;
+      if (i === 0) {
+        //Actual division of the deck
+        part = initialDeck.slice(0, portion);
+      } else if (i == props.epidemicCards - 1) {
+        part = initialDeck.slice(portion * i);
+      } else {
+        part = initialDeck.slice(portion * i, portion * (i + 1));
+      }
+      //I add an epidemic card to each of the parts of the deck
+      part.push(epidemicCards[0]);
+      //I shuffle the deck
+      shuffle(part);
+      finalDeck = [...finalDeck, ...part];
+    }
+    console.log(finalDeck);
+    setHandCardsDeck(finalDeck);
     setPlayersData(
       props.playersData.map((p, index) => ({
         ...p,
@@ -264,6 +287,9 @@ export default function Board(props) {
       {visualLines}
       {visualMapLines}
       {visualFerries}
+      <div className="board--handCardsCorner">
+        {handCardsDeck.length > 0 && <div className="handCardBack"></div>}
+      </div>
       <div className="playersMats-div">{visualPlayerMat}</div>
     </div>
   );
