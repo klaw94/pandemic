@@ -14,6 +14,7 @@ import {
   EnumEvents,
 } from "../data/handCards";
 import InfectionRateCounter from "./InfectionRateCounter";
+import OutbreaksTracker from "./OutbreaksTracker";
 
 function shuffle(deck) {
   // for 1000 turns
@@ -293,6 +294,7 @@ export default function Board(props) {
       {visualLines}
       {visualMapLines}
       {visualFerries}
+      <OutbreaksTracker />
       <div className="board--handCardsCorner">
         {handCardsDeck.length > 0 && <div className="handCardBack"></div>}
       </div>

@@ -1,0 +1,29 @@
+.outbreakTracker {
+  position: absolute;
+  bottom: 190px;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.outbreakTracker--title {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.outbreakTracker--counterDiv {
+  position: relative;
+  width: 100%;
+}
+
+.outbreakTracker--diamond {
+  position: relative;
+  background: #21b2da71;
+  height: 28px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 28px;
+  border: 1px solid black;
+}
