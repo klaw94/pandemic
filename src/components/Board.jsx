@@ -13,6 +13,7 @@ import {
   EnumCardTypes,
   EnumEvents,
 } from "../data/handCards";
+import InfectionRateCounter from "./InfectionRateCounter";
 
 function shuffle(deck) {
   // for 1000 turns
@@ -283,6 +284,7 @@ export default function Board(props) {
           {visualInfectionCardsDiscardPile}
         </div>
       </div>
+      <InfectionRateCounter infectionRateCounter={0} />
       {visualCountries}
       {visualLines}
       {visualMapLines}
