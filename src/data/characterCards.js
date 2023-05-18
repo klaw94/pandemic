@@ -14,6 +14,7 @@ const characterCardsData = [
   {
     name: EnumCharacters.Medic,
     color: "orange",
+    backgroundColor: "#e8a877",
     photo: "medic.png",
     icon: "orangepawn.png",
     description:
@@ -23,6 +24,7 @@ const characterCardsData = [
   {
     name: EnumCharacters.Dispatcher,
     color: "pink",
+    backgroundColor: "#e877ca",
     photo: "dispatcher.png",
     icon: "pinkpawn.png",
     description:
@@ -32,6 +34,7 @@ const characterCardsData = [
   {
     name: EnumCharacters.Researcher,
     color: "brown",
+    backgroundColor: "#926d55",
     photo: "researcher.png",
     icon: "brownpawn.png",
     description:
@@ -41,6 +44,7 @@ const characterCardsData = [
   {
     name: EnumCharacters.Operator,
     color: "greenyellow",
+    backgroundColor: "#a9ec79",
     photo: "operations.png",
     icon: "lightgreenpawn.png",
     description:
@@ -50,6 +54,7 @@ const characterCardsData = [
   {
     name: EnumCharacters.Quarantiner,
     color: "green",
+    backgroundColor: "#55783b",
     photo: "quarantine.png",
     icon: "darkgreenpawn.png",
     description:
@@ -59,6 +64,7 @@ const characterCardsData = [
   {
     name: EnumCharacters.Scientist,
     color: "white",
+    backgroundColor: "#d5dbd0",
     photo: "scientist.png",
     icon: "whitepawn.png",
     description:
@@ -68,6 +74,7 @@ const characterCardsData = [
   {
     name: EnumCharacters.Planner,
     color: "blue",
+    backgroundColor: "#99e8f3",
     photo: "planner.png",
     icon: "bluepawn.png",
     description:

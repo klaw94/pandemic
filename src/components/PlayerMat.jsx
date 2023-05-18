@@ -10,24 +10,12 @@ import "./PlayerMat.css";
 export default function PlayerMat(props) {
   const [cardBig, setCardBig] = useState(false);
 
-  function doNothing() {
+  const styles = { backgroundColor: props.card.backgroundColor };
+
+  function changeSizeCard() {
     setCardBig((prevValue) => !prevValue);
   }
   console.log(props);
-
-  const visualHandCards = props.card.cards.map((card) =>
-    card.type === EnumCardTypes.Country ? (
-      <CountryHandCard key={nanoid()} card={card} />
-    ) : (
-      <EventHandCard
-        key={nanoid()}
-        name={card.name}
-        color={card.color}
-        photo={card.photo}
-        description={card.text}
-      />
-    )
-  );
 
   const visualRedCards = props.card.cards.map((card) =>
     card.color === "red" ? (
@@ -73,7 +61,7 @@ export default function PlayerMat(props) {
   );
 
   return (
-    <div className="playerMat">
+    <div className="playerMat" style={styles}>
       <div className="playerMat-cardDiv">
         <CharacterCard
           key={nanoid()}
@@ -81,7 +69,7 @@ export default function PlayerMat(props) {
           name={props.card.name}
           description={props.card.description}
           color={props.card.color}
-          handleClick={doNothing}
+          handleClick={changeSizeCard}
           className={cardBig ? "" : "small"}
         />
         {visualBlueCards}
