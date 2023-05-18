@@ -46,6 +46,10 @@ export default function Board(props) {
     index: 0,
     values: [2, 2, 2, 3, 3, 4, 4],
   });
+  const [outbreakTrackerData, setOutbreakTrackerData] = useState({
+    index: 0,
+    values: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+  });
 
   useEffect(() => {
     if (playersData && playersData.length > 0) {
@@ -294,7 +298,7 @@ export default function Board(props) {
       {visualLines}
       {visualMapLines}
       {visualFerries}
-      <OutbreaksTracker />
+      <OutbreaksTracker data={outbreakTrackerData} />
       <div className="board--handCardsCorner">
         {handCardsDeck.length > 0 && <div className="handCardBack"></div>}
       </div>

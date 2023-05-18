@@ -20,10 +20,15 @@
 
 .outbreakTracker--diamond {
   position: relative;
-  background: #21b2da71;
+  background: rgba(0, 128, 0, 0.666);
   height: 28px;
   text-align: center;
   transform: rotate(45deg);
   width: 28px;
   border: 1px solid black;
+}
+
+.selectedRate {
+  background-color: rgb(223, 64, 64);
+  box-shadow: 1px 1px 20px 5px rgb(131, 198, 198);
 }
