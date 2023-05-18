@@ -31,6 +31,7 @@ export default function SettingsPopUp(props) {
   }, [playersData, formData]);
 
   function handleChangeNPlayers(event) {
+    setCharacterDisplayMode(false);
     setNPlayers(event.target.value);
   }
 
