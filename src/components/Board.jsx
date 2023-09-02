@@ -322,20 +322,23 @@ export default function Board(props) {
       [{ name: departureCountry.name, steps: 0 }]
     );
     possibleItineraries = flattenNestedArrays(possibleItineraries);
-    let shortestItineary = getShortestArray(possibleItineraries);
-    setCountriesData((prevValue) =>
-      prevValue.map((c) =>
-        shortestItineary.some((itinearyItem) => itinearyItem.name === c.name)
-          ? { ...c, highlighted: true }
-          : c
-      )
-    );
+    if (possibleItineraries.length > 0) {
+      let shortestItineary = getShortestArray(possibleItineraries);
+      setCountriesData((prevValue) =>
+        prevValue.map((c) =>
+          shortestItineary.some((itinearyItem) => itinearyItem.name === c.name)
+            ? { ...c, highlighted: true }
+            : c
+        )
+      );
+    }
+
+    console.log(possibleItineraries);
   }
 
   function getTravelItinerary(origin, destination, maxSteps, itinerary) {
     let possibleItineraries = [];
     if (origin.connections.includes(destination.name)) {
-      console.log(origin);
       itinerary.push({ name: destination.name, steps: itinerary.length });
       return flattenNestedArrays(itinerary);
     } else {
