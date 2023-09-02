@@ -34,7 +34,11 @@ export default function Country(props) {
   ));
 
   return (
-    <div className="countryDiv" style={props.stylesDiv}>
+    <div
+      className="countryDiv"
+      style={props.stylesDiv}
+      onClick={() => props.handleClick(props.country)}
+    >
       <div className="country" style={props.styleKnop}>
         {" "}
         C{" "}

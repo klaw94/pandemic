@@ -234,6 +234,7 @@ const countries = [
       EnumCountries.Miami,
       EnumCountries.Lima,
       EnumCountries.SaoPaulo,
+      EnumCountries.BuenosAires,
     ],
     color: "yellow",
     infectionCubes: [],

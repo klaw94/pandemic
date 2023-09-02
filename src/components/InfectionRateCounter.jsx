@@ -1,11 +1,12 @@
 import React from "react";
 import "./InfectionRateCounter.css";
+import { nanoid } from "nanoid";
 
 export default function InfectionRateCounter(props) {
   const visualInfectionValues = props.data.values.map((value, index) => {
     let className = index === props.data.index ? "selectedRate" : "";
     return (
-      <div className="infectionRateCounter--counter">
+      <div key={nanoid()} className="infectionRateCounter--counter">
         <div className={`infectionRateCounter--circle ${className}`}></div>
         <p className="infectionRateCounter--number">{value}</p>
       </div>

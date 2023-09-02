@@ -26,7 +26,7 @@
 .h5Div h5 {
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 5px;
+  margin-left: 0;
 }
 
 .footerDiv {
@@ -40,4 +40,6 @@
 
 .smallTitle {
   font-size: 10px;
+  text-align: right;
+  margin-top: 5px;
 }

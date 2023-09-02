@@ -57,6 +57,7 @@ export default function Board(props) {
     { cured: false, photo: "cureyellow" },
     { cured: false, photo: "cureblue" },
   ]);
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(false);
 
   useEffect(() => {
     if (playersData && playersData.length > 0) {
@@ -83,11 +84,6 @@ export default function Board(props) {
       });
     }
   }, [playersData]); //run this code when the value of infection deck changes
-
-  // useEffect(() => {
-  //   setPlayersData(props.playersData);
-
-  // }, []);
 
   useEffect(() => {
     let initialDeck = shuffle(handCards);
@@ -133,7 +129,6 @@ export default function Board(props) {
       shuffle(part);
       finalDeck = [...finalDeck, ...part];
     }
-    console.log(finalDeck);
     setHandCardsDeck(finalDeck);
     setPlayersData(
       props.playersData.map((p, index) => ({
@@ -146,10 +141,12 @@ export default function Board(props) {
   useEffect(() => {
     if (gameStatus === EnumGamesStages.PreparationRound) {
       executeFirstRoundOfInfection();
+      setTimeout(setGameStatus, 10000, EnumGamesStages.PlayersTurn);
+    }
+    if (gameStatus === EnumGamesStages.PlayersTurn) {
+      setCurrentlyPlaying({ name: playersData[0].name, index: 0 });
     }
   }, [gameStatus]);
-
-  //console.log(infectionCardsDiscard);
 
   function executeFirstRoundOfInfection() {
     const drawnCards = [];
@@ -218,6 +215,7 @@ export default function Board(props) {
         stylesDiv={stylesDiv}
         styleKnop={styleKnop}
         styleName={stylesName}
+        handleClick={checkMovement}
       />
     );
   });
@@ -287,8 +285,119 @@ export default function Board(props) {
   );
 
   const visualPlayerMat = playersData.map((player) => (
-    <PlayerMat card={player} key={nanoid()} />
+    <PlayerMat
+      card={player}
+      key={nanoid()}
+      currentlyPlaying={currentlyPlaying}
+      endTurn={passTurnToNextPlayer}
+    />
   ));
+
+  function passTurnToNextPlayer() {
+    setCurrentlyPlaying((prevPlayer) => {
+      if (prevPlayer.index === playersData.length - 1) {
+        return { name: playersData[0].name, index: 0 };
+      } else {
+        return {
+          name: playersData[prevPlayer.index + 1].name,
+          index: prevPlayer.index + 1,
+        };
+      }
+    });
+  }
+
+  function checkMovement(clickedCountry) {
+    const currentPlayer = playersData.find(
+      (player) => player.name === currentlyPlaying.name
+    );
+    const departureCountry = countries.find(
+      (country) => country.name === currentPlayer.location
+    );
+    let possibleItineraries = getTravelItinerary(
+      departureCountry,
+      clickedCountry,
+      4,
+      [{ name: departureCountry.name, steps: 0 }]
+    );
+    possibleItineraries = flattenNestedArrays(possibleItineraries);
+    console.log(possibleItineraries);
+    let shortestItineary = getShortestArray(possibleItineraries);
+    console.log(shortestItineary);
+  }
+
+  function getTravelItinerary(origin, destination, maxSteps, itinerary) {
+    let possibleItineraries = [];
+    if (origin.connections.includes(destination.name)) {
+      console.log(origin);
+      itinerary.push({ name: destination.name, steps: itinerary.length });
+      return flattenNestedArrays(itinerary);
+    } else {
+      if (maxSteps > 0) {
+        for (let connection of origin.connections) {
+          let ferryList = ferries.map((ferry) => ferry.name);
+          if (ferryList.includes(connection)) {
+            let takenFerry = ferries.find((ferry) => ferry.name == connection);
+            let destinationName = takenFerry.connections.find(
+              (c) => c.name !== origin.name
+            );
+            let destinationCountry = countries.find(
+              (country) => country.name === destinationName
+            );
+            destinationCountry.connections =
+              destinationCountry.connections.filter(
+                (c) => !ferryList.includes(c)
+              );
+            let result = getTravelItinerary(
+              destinationCountry,
+              destination,
+              maxSteps - 1,
+              [
+                ...itinerary,
+                { name: destinationCountry.name, steps: itinerary.length },
+              ]
+            );
+            if (result && result.length > 0) {
+              possibleItineraries.push(flattenNestedArrays(result));
+            }
+          } else if (!possibleItineraries.some((c) => c.name === connection)) {
+            let result = getTravelItinerary(
+              countries.find((country) => country.name === connection),
+              destination,
+              maxSteps - 1,
+              [...itinerary, { name: connection, steps: itinerary.length }]
+            );
+            if (result && result.length > 0) {
+              possibleItineraries.push(flattenNestedArrays(result));
+            }
+          }
+        }
+      }
+      return flattenNestedArrays(possibleItineraries);
+    }
+  }
+
+  function flattenNestedArrays(arr) {
+    let flattened = [];
+    arr.forEach((item) => {
+      if (Array.isArray(item) && Array.isArray(item[0])) {
+        flattened = flattened.concat(flattenNestedArrays(item));
+      } else {
+        flattened.push(item);
+      }
+    });
+    return flattened;
+  }
+
+  function getShortestArray(arr) {
+    let shortestArray = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      // Compare the length of the current array with the length of the shortest array
+      if (arr[i].length < shortestArray.length) {
+        shortestArray = arr[i];
+      }
+    }
+    return shortestArray;
+  }
 
   return (
     <div className="board">

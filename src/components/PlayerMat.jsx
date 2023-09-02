@@ -9,13 +9,13 @@ import "./PlayerMat.css";
 
 export default function PlayerMat(props) {
   const [cardBig, setCardBig] = useState(false);
+  const [actions, setActions] = useState(4);
 
   const styles = { backgroundColor: props.card.backgroundColor };
 
   function changeSizeCard() {
     setCardBig((prevValue) => !prevValue);
   }
-  console.log(props);
 
   const visualRedCards = props.card.cards.map((card) =>
     card.color === "red" ? (
@@ -60,6 +60,10 @@ export default function PlayerMat(props) {
     )
   );
 
+  function endTurn() {
+    props.endTurn();
+  }
+
   return (
     <div className="playerMat" style={styles}>
       <div className="playerMat-cardDiv">
@@ -77,6 +81,19 @@ export default function PlayerMat(props) {
         {visualYellowCards}
         {visualBlackCards}
         {visualEventCards}
+      </div>
+      {props.currentlyPlaying &&
+        props.currentlyPlaying.name === props.card.name && (
+          <div>
+            <h3>It is your turn</h3>
+            <p>Actions: {actions}</p>
+          </div>
+        )}
+      <div>
+        {props.currentlyPlaying &&
+          props.currentlyPlaying.name === props.card.name && (
+            <button onClick={endTurn}>End Turn</button>
+          )}
       </div>
     </div>
   );

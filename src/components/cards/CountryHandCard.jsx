@@ -12,8 +12,6 @@ export default function CountryHandCard(props) {
 
   const backgroundStyle = { backgroundColor: `${props.card.color}` };
 
-  console.log(props.card.color);
-
   return (
     <div className={`handCard countryHandCard`} style={styles}>
       <div className="h5Div" style={backgroundStyle}>
