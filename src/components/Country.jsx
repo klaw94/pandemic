@@ -42,7 +42,17 @@ export default function Country(props) {
       style={props.stylesDiv}
       onClick={() => props.handleClick(props.country)}
     >
-      {/* <div>Do you want to move here?</div> */}
+      {props.country.isDestination && (
+        <div className="country-tooltip">
+          <div>Do you want to move to {props.country.name}?</div>
+          <div>
+            <button onClick={(e) => props.confirmMovement(props.country)}>
+              Yes
+            </button>
+            <button>No</button>
+          </div>
+        </div>
+      )}
       <div className={`country ${highlightedClass}`} style={props.styleKnop}>
         {" "}
         C{" "}

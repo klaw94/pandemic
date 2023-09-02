@@ -57,7 +57,8 @@ export default function Board(props) {
     { cured: false, photo: "cureyellow" },
     { cured: false, photo: "cureblue" },
   ]);
-  const [currentlyPlaying, setCurrentlyPlaying] = useState(false);
+  const [currentlyPlaying, setCurrentlyPlaying] = useState();
+  const [selectedItinerary, setSelectedItinerary] = useState([]);
 
   useEffect(() => {
     if (playersData && playersData.length > 0) {
@@ -144,9 +145,13 @@ export default function Board(props) {
       setTimeout(setGameStatus, 10000, EnumGamesStages.PlayersTurn);
     }
     if (gameStatus === EnumGamesStages.PlayersTurn) {
-      setCurrentlyPlaying({ name: playersData[0].name, index: 0 });
+      setCurrentlyPlaying({ name: playersData[0].name, index: 0, actions: 4 });
     }
   }, [gameStatus]);
+
+  useEffect(() => {
+    setSelectedItinerary([]);
+  }, [currentlyPlaying]);
 
   function executeFirstRoundOfInfection() {
     const drawnCards = [];
@@ -216,6 +221,8 @@ export default function Board(props) {
         styleKnop={styleKnop}
         styleName={stylesName}
         handleClick={checkMovement}
+        confirmMovement={confirmMovement}
+        cancelMovement={cancelMovement}
       />
     );
   });
@@ -298,17 +305,23 @@ export default function Board(props) {
   function passTurnToNextPlayer() {
     setCurrentlyPlaying((prevPlayer) => {
       if (prevPlayer.index === playersData.length - 1) {
-        return { name: playersData[0].name, index: 0 };
+        return { name: playersData[0].name, index: 0, actions: 4 };
       } else {
         return {
           name: playersData[prevPlayer.index + 1].name,
           index: prevPlayer.index + 1,
+          actions: 4,
         };
       }
     });
   }
 
   function checkMovement(clickedCountry) {
+    console.log(playersData);
+    console.log(selectedItinerary);
+    if (selectedItinerary.length > 0) {
+      return;
+    }
     const currentPlayer = playersData.find(
       (player) => player.name === currentlyPlaying.name
     );
@@ -318,19 +331,27 @@ export default function Board(props) {
     let possibleItineraries = getTravelItinerary(
       departureCountry,
       clickedCountry,
-      4,
+      currentlyPlaying.actions,
       [{ name: departureCountry.name, steps: 0 }]
     );
     possibleItineraries = flattenNestedArrays(possibleItineraries);
     if (possibleItineraries.length > 0) {
       let shortestItineary = getShortestArray(possibleItineraries);
       setCountriesData((prevValue) =>
-        prevValue.map((c) =>
-          shortestItineary.some((itinearyItem) => itinearyItem.name === c.name)
-            ? { ...c, highlighted: true }
-            : c
-        )
+        prevValue.map((c) => {
+          let index = shortestItineary.findIndex(
+            (itinearyItem) => itinearyItem.name === c.name
+          );
+          if (index === shortestItineary.length - 1) {
+            return { ...c, highlighted: true, isDestination: true };
+          } else if (index !== -1) {
+            return { ...c, highlighted: true };
+          } else {
+            return c;
+          }
+        })
       );
+      setSelectedItinerary(shortestItineary);
     }
 
     console.log(possibleItineraries);
@@ -406,6 +427,62 @@ export default function Board(props) {
       }
     }
     return shortestArray;
+  }
+
+  function confirmMovement(country) {
+    // console.log(currentlyPlaying);
+    // let originCountry = countriesData.find(
+    //   (c) => c.name === selectedItinerary[0].name
+    // );
+    // let destinationCountry = countriesData.find(
+    //   (c) => c.name === selectedItinerary[selectedItinerary.length - 1].name
+    // );
+    let actionsTaken = selectedItinerary.length - 1;
+    let currentPlayerIcon = playersData.find(
+      (p) => p.name === currentlyPlaying.name
+    )?.icon;
+    console.log(playersData);
+    setCountriesData((prevValue) =>
+      prevValue.map((c) => {
+        if (c.name === selectedItinerary[0].name) {
+          return {
+            ...c,
+            players: c.players.filter((p) => p !== currentPlayerIcon),
+            highlighted: false,
+            isDestination: false,
+          };
+        } else if (
+          c.name === selectedItinerary[selectedItinerary.length - 1].name
+        ) {
+          return {
+            ...c,
+            players: [...c.players, currentPlayerIcon],
+            highlighted: false,
+            isDestination: false,
+          };
+        } else {
+          return {
+            ...c,
+            highlighted: false,
+            isDestination: false,
+          };
+        }
+      })
+    );
+    setCurrentlyPlaying((prevValue) => ({
+      ...prevValue,
+      actions: prevValue.actions - actionsTaken,
+    }));
+    //player to the new place,
+    //player removed from older place.
+    //itinerary to 0
+    //highlighted to 0
+    //actions - number of steps
+    //Where do i get the location of the previous player.?? Subsequent movement doesn;t work.
+  }
+
+  function cancelMovement() {
+    //all countries are no highlighted and pop up is removed.
   }
 
   return (

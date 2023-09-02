@@ -17,6 +17,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Chicago,
@@ -33,6 +34,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Montreal,
@@ -48,6 +50,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.NewYork,
@@ -64,6 +67,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Washington,
@@ -79,6 +83,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Atlanta,
@@ -94,6 +99,7 @@ const countries = [
     researchCenter: true,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Madrid,
@@ -111,6 +117,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.London,
@@ -127,6 +134,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Paris,
@@ -144,6 +152,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Essen,
@@ -160,6 +169,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Milan,
@@ -175,6 +185,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.StPetersburg,
@@ -190,6 +201,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.LosAngeles,
@@ -206,6 +218,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
 
   {
@@ -223,6 +236,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Miami,
@@ -239,6 +253,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Bogota,
@@ -256,6 +271,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Lima,
@@ -271,6 +287,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Santiago,
@@ -282,6 +299,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.BuenosAires,
@@ -293,6 +311,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.SaoPaulo,
@@ -309,6 +328,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Lagos,
@@ -324,6 +344,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Kinshasa,
@@ -339,6 +360,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Johannesburg,
@@ -350,6 +372,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Khartoum,
@@ -366,6 +389,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Algiers,
@@ -382,6 +406,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Istanbul,
@@ -400,6 +425,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Cairo,
@@ -417,6 +443,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Moscow,
@@ -432,6 +459,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Baghdad,
@@ -449,6 +477,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Tehran,
@@ -465,6 +494,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Riyadh,
@@ -480,6 +510,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Karachi,
@@ -497,6 +528,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Mumbai,
@@ -512,6 +544,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Delhi,
@@ -529,6 +562,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Chennai,
@@ -546,6 +580,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Kolkata,
@@ -562,6 +597,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Jakarta,
@@ -578,6 +614,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Bangkok,
@@ -595,6 +632,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.HongKong,
@@ -613,6 +651,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Shangai,
@@ -630,6 +669,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Beijing,
@@ -641,6 +681,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Seoul,
@@ -656,6 +697,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Tokyo,
@@ -672,6 +714,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Osaka,
@@ -683,6 +726,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Taipei,
@@ -699,6 +743,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Manila,
@@ -716,6 +761,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.HoChiminh,
@@ -732,6 +778,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
   {
     name: EnumCountries.Sydney,
@@ -747,6 +794,7 @@ const countries = [
     researchCenter: false,
     players: [],
     highlighted: false,
+    isDestination: false,
   },
 ];
 

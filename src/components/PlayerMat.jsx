@@ -9,7 +9,6 @@ import "./PlayerMat.css";
 
 export default function PlayerMat(props) {
   const [cardBig, setCardBig] = useState(false);
-  const [actions, setActions] = useState(4);
 
   const styles = { backgroundColor: props.card.backgroundColor };
 
@@ -86,7 +85,7 @@ export default function PlayerMat(props) {
         props.currentlyPlaying.name === props.card.name && (
           <div>
             <h3>It is your turn</h3>
-            <p>Actions: {actions}</p>
+            <p>Actions: {props.currentlyPlaying.actions}</p>
           </div>
         )}
       <div>

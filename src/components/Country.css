@@ -1,3 +1,10 @@
 .highlightedCountry {
   box-shadow: 0 0 5px 3px #ddeaf1;
 }
+
+.country-tooltip {
+  position: inherit;
+  background-color: rgb(222, 247, 165);
+  z-index: 100000;
+  width: 400px;
+}
