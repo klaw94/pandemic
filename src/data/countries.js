@@ -16,6 +16,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Chicago,
@@ -31,6 +32,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Montreal,
@@ -45,6 +47,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.NewYork,
@@ -60,6 +63,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Washington,
@@ -74,6 +78,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Atlanta,
@@ -88,6 +93,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: true,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Madrid,
@@ -104,6 +110,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.London,
@@ -119,6 +126,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Paris,
@@ -135,6 +143,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Essen,
@@ -150,6 +159,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Milan,
@@ -164,6 +174,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.StPetersburg,
@@ -178,6 +189,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.LosAngeles,
@@ -193,6 +205,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
 
   {
@@ -209,6 +222,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Miami,
@@ -224,6 +238,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Bogota,
@@ -240,6 +255,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Lima,
@@ -254,6 +270,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Santiago,
@@ -264,6 +281,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.BuenosAires,
@@ -274,6 +292,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.SaoPaulo,
@@ -289,6 +308,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Lagos,
@@ -303,6 +323,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Kinshasa,
@@ -317,6 +338,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Johannesburg,
@@ -327,6 +349,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Khartoum,
@@ -342,6 +365,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Algiers,
@@ -357,6 +381,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Istanbul,
@@ -374,6 +399,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Cairo,
@@ -390,6 +416,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Moscow,
@@ -404,6 +431,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Baghdad,
@@ -420,6 +448,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Tehran,
@@ -435,6 +464,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Riyadh,
@@ -449,6 +479,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Karachi,
@@ -465,6 +496,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Mumbai,
@@ -479,6 +511,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Delhi,
@@ -495,6 +528,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Chennai,
@@ -511,6 +545,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Kolkata,
@@ -526,6 +561,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Jakarta,
@@ -541,6 +577,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Bangkok,
@@ -557,6 +594,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.HongKong,
@@ -574,6 +612,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Shangai,
@@ -590,6 +629,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Beijing,
@@ -600,6 +640,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Seoul,
@@ -614,6 +655,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Tokyo,
@@ -629,6 +671,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Osaka,
@@ -639,6 +682,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Taipei,
@@ -654,6 +698,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Manila,
@@ -670,6 +715,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.HoChiminh,
@@ -685,6 +731,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
   {
     name: EnumCountries.Sydney,
@@ -699,6 +746,7 @@ const countries = [
     infectionCubes: [],
     researchCenter: false,
     players: [],
+    highlighted: false,
   },
 ];
 

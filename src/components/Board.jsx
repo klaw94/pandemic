@@ -323,6 +323,13 @@ export default function Board(props) {
     console.log(possibleItineraries);
     let shortestItineary = getShortestArray(possibleItineraries);
     console.log(shortestItineary);
+    setCountriesData((prevValue) =>
+      prevValue.map((c) =>
+        shortestItineary.some((itinearyItem) => itinearyItem.name === c.name)
+          ? { ...c, highlighted: true }
+          : c
+      )
+    );
   }
 
   function getTravelItinerary(origin, destination, maxSteps, itinerary) {
@@ -391,7 +398,6 @@ export default function Board(props) {
   function getShortestArray(arr) {
     let shortestArray = arr[0];
     for (let i = 1; i < arr.length; i++) {
-      // Compare the length of the current array with the length of the shortest array
       if (arr[i].length < shortestArray.length) {
         shortestArray = arr[i];
       }

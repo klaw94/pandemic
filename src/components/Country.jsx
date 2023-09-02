@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Country.css";
 import { nanoid } from "nanoid";
 import blackcube from "../assets/blackcube.png";
 import bluecube from "../assets/bluecube.png";
@@ -8,6 +9,8 @@ import researchCenter from "../assets/hospital.png";
 import EnumCountries from "../data/enumCountries";
 
 export default function Country(props) {
+  let highlightedClass = props.country.highlighted ? "highlightedCountry" : "";
+
   const visualCubes = props.country.infectionCubes.map((cube) => {
     //switch to link color with cube
     let visualCube;
@@ -39,7 +42,8 @@ export default function Country(props) {
       style={props.stylesDiv}
       onClick={() => props.handleClick(props.country)}
     >
-      <div className="country" style={props.styleKnop}>
+      {/* <div>Do you want to move here?</div> */}
+      <div className={`country ${highlightedClass}`} style={props.styleKnop}>
         {" "}
         C{" "}
       </div>
