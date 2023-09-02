@@ -234,9 +234,11 @@ export default function Board(props) {
     );
   });
 
-  const visualLines = countries.map((country) => {
+  const visualLines = countriesData.map((country) => {
     return country.connections.map((conName) => {
-      let connectedCountry = countries.find((c) => c.name === conName);
+      let connectedCountry = countriesData.find((c) => c.name === conName);
+      let isHighlighted =
+        country.highlighted && connectedCountry && connectedCountry.highlighted;
       let connectedFerry = ferries.find((f) => f.name === conName);
       return (
         <svg key={nanoid()}>
@@ -247,7 +249,7 @@ export default function Board(props) {
               connectedFerry ? connectedFerry.left : connectedCountry.left + 10
             }
             y2={connectedFerry ? connectedFerry.top : connectedCountry.top + 10}
-            stroke={"AntiqueWhite"}
+            stroke={isHighlighted ? "#b433aa" : "AntiqueWhite"}
           ></line>
         </svg>
       );
@@ -320,9 +322,7 @@ export default function Board(props) {
       [{ name: departureCountry.name, steps: 0 }]
     );
     possibleItineraries = flattenNestedArrays(possibleItineraries);
-    console.log(possibleItineraries);
     let shortestItineary = getShortestArray(possibleItineraries);
-    console.log(shortestItineary);
     setCountriesData((prevValue) =>
       prevValue.map((c) =>
         shortestItineary.some((itinearyItem) => itinearyItem.name === c.name)
