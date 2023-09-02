@@ -317,16 +317,14 @@ export default function Board(props) {
   }
 
   function checkMovement(clickedCountry) {
-    console.log(playersData);
-    console.log(selectedItinerary);
     if (selectedItinerary.length > 0) {
       return;
     }
     const currentPlayer = playersData.find(
       (player) => player.name === currentlyPlaying.name
     );
-    const departureCountry = countries.find(
-      (country) => country.name === currentPlayer.location
+    const departureCountry = countriesData.find((country) =>
+      country.players.includes(currentPlayer.icon)
     );
     let possibleItineraries = getTravelItinerary(
       departureCountry,
@@ -335,10 +333,13 @@ export default function Board(props) {
       [{ name: departureCountry.name, steps: 0 }]
     );
     possibleItineraries = flattenNestedArrays(possibleItineraries);
+    console.log(possibleItineraries);
     if (possibleItineraries.length > 0) {
       let shortestItineary = getShortestArray(possibleItineraries);
+      console.log(shortestItineary);
       setCountriesData((prevValue) =>
         prevValue.map((c) => {
+          console.log(shortestItineary);
           let index = shortestItineary.findIndex(
             (itinearyItem) => itinearyItem.name === c.name
           );
@@ -353,14 +354,14 @@ export default function Board(props) {
       );
       setSelectedItinerary(shortestItineary);
     }
-
-    console.log(possibleItineraries);
   }
 
   function getTravelItinerary(origin, destination, maxSteps, itinerary) {
+    console.log(itinerary);
     let possibleItineraries = [];
     if (origin.connections.includes(destination.name)) {
       itinerary.push({ name: destination.name, steps: itinerary.length });
+      console.log(itinerary);
       return flattenNestedArrays(itinerary);
     } else {
       if (maxSteps > 0) {
@@ -420,6 +421,9 @@ export default function Board(props) {
   }
 
   function getShortestArray(arr) {
+    if (!Array.isArray(arr[0])) {
+      return arr;
+    }
     let shortestArray = arr[0];
     for (let i = 1; i < arr.length; i++) {
       if (arr[i].length < shortestArray.length) {
@@ -430,18 +434,10 @@ export default function Board(props) {
   }
 
   function confirmMovement(country) {
-    // console.log(currentlyPlaying);
-    // let originCountry = countriesData.find(
-    //   (c) => c.name === selectedItinerary[0].name
-    // );
-    // let destinationCountry = countriesData.find(
-    //   (c) => c.name === selectedItinerary[selectedItinerary.length - 1].name
-    // );
     let actionsTaken = selectedItinerary.length - 1;
     let currentPlayerIcon = playersData.find(
       (p) => p.name === currentlyPlaying.name
     )?.icon;
-    console.log(playersData);
     setCountriesData((prevValue) =>
       prevValue.map((c) => {
         if (c.name === selectedItinerary[0].name) {
