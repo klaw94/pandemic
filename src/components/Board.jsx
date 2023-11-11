@@ -247,6 +247,25 @@ export default function Board(props) {
       let isHighlighted =
         country.highlighted && connectedCountry && connectedCountry.highlighted;
       let connectedFerry = ferries.find((f) => f.name === conName);
+      if (connectedFerry && country.highlighted) {
+        let ferryList = ferries.map((ferry) => ferry.name);
+        let landingFerryName = connectedFerry.connections.find((f) =>
+          ferryList.includes(f)
+        );
+        let landingFerry = ferries.find((f) => f.name === landingFerryName);
+        let finalCountryDestinationName = landingFerry.connections.find(
+          (c) => !ferryList.includes(c)
+        );
+        let finalCountryDestination = countriesData.find(
+          (c) => c.name === finalCountryDestinationName
+        );
+        if (finalCountryDestination.highlighted) {
+          isHighlighted = true;
+        }
+        //if (ferryList.includes(connection))
+        //check the landing ferry and the connection of that landing ferry thats not a ferry.
+        //is that connection highlighted?? then highlighted
+      }
       return (
         <svg key={nanoid()}>
           <line
@@ -318,6 +337,7 @@ export default function Board(props) {
 
   function checkMovement(clickedCountry) {
     if (selectedItinerary.length > 0) {
+      //If I have already a pop up, i dont want a new itinerary
       return;
     }
     const currentPlayer = playersData.find(
@@ -333,13 +353,14 @@ export default function Board(props) {
       [{ name: departureCountry.name, steps: 0 }]
     );
     possibleItineraries = flattenNestedArrays(possibleItineraries);
-    console.log(possibleItineraries);
     if (possibleItineraries.length > 0) {
       let shortestItineary = getShortestArray(possibleItineraries);
-      console.log(shortestItineary);
+      if (shortestItineary.length - 1 > currentlyPlaying.actions) {
+        // -1 because it includes the origin.
+        return;
+      }
       setCountriesData((prevValue) =>
         prevValue.map((c) => {
-          console.log(shortestItineary);
           let index = shortestItineary.findIndex(
             (itinearyItem) => itinearyItem.name === c.name
           );
@@ -357,11 +378,9 @@ export default function Board(props) {
   }
 
   function getTravelItinerary(origin, destination, maxSteps, itinerary) {
-    console.log(itinerary);
     let possibleItineraries = [];
     if (origin.connections.includes(destination.name)) {
       itinerary.push({ name: destination.name, steps: itinerary.length });
-      console.log(itinerary);
       return flattenNestedArrays(itinerary);
     } else {
       if (maxSteps > 0) {
@@ -469,12 +488,6 @@ export default function Board(props) {
       ...prevValue,
       actions: prevValue.actions - actionsTaken,
     }));
-    //player to the new place,
-    //player removed from older place.
-    //itinerary to 0
-    //highlighted to 0
-    //actions - number of steps
-    //Where do i get the location of the previous player.?? Subsequent movement doesn;t work.
   }
 
   function cancelMovement() {
