@@ -452,7 +452,7 @@ export default function Board(props) {
     return shortestArray;
   }
 
-  function confirmMovement(country) {
+  function confirmMovement() {
     let actionsTaken = selectedItinerary.length - 1;
     let currentPlayerIcon = playersData.find(
       (p) => p.name === currentlyPlaying.name
@@ -490,8 +490,15 @@ export default function Board(props) {
     }));
   }
 
-  function cancelMovement() {
-    //all countries are no highlighted and pop up is removed.
+  function cancelMovement(country) {
+    setCountriesData((prevValue) => {
+      return prevValue.map((c) => ({
+        ...c,
+        isDestination: false,
+        highlighted: false,
+      }));
+    });
+    setSelectedItinerary([]);
   }
 
   return (

@@ -49,7 +49,9 @@ export default function Country(props) {
             <button onClick={(e) => props.confirmMovement(props.country)}>
               Yes
             </button>
-            <button>No</button>
+            <button onClick={(e) => props.cancelMovement(props.country)}>
+              No
+            </button>
           </div>
         </div>
       )}
